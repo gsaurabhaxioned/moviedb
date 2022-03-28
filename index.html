@@ -6,25 +6,9 @@
 <head>
  
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Client</title>
-  
-  <!-- 120 word description for SEO purposes goes here. Note: Usage of lang tag. -->
-  <!-- <meta name="description" lang="en" content=""> -->
-  
-  <!-- Keywords to help with SEO go here. Note: Usage of lang tag.  -->
-  <!-- <meta name="keywords" lang="en" content=""> -->
-  
-  <!-- View-port Basics: http://mzl.la/VYREaP -->
-  <!-- This meta tag is used for mobile device to display the page without any zooming,
-       so how much the device is able to fit on the screen is what's shown initially. 
-       Remove comments from this tag, when you want to apply media queries to the website. -->
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
-  
-  <!-- To adhear no-cache for Chrome -->
-<!--   <meta http-equiv="cache-control" content="no-store, no-cache, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-store, no-cache" />
-  <meta http-equiv="Expires" content="0" /> -->
 
   <!-- Place favicon.ico in the root directory: mathiasbynens.be/notes/touch-icons -->
   <link rel="shortcut icon" href="favicon.ico" />
@@ -52,7 +36,24 @@
     <!--header section start-->
     <!--main section start-->
     <main>
-
+      <section class="login-page" >
+        <div class="wrapper">
+          <h1>Login</h1>
+          <form action="homepage.html" method="post" class="loginform">
+            <div class="usernamefield">
+              <input type="text" name="username" class="username" placeholder="Enter username">
+              <span class="usernameerror"></span>
+            </div>
+            <div class="passwordfield">
+              <input type="password" name="password" class="password" placeholder="Enter password">
+              <span class="passworderror"></span>
+            </div>
+            <div class="submit">
+              <input type="submit" value="submit">
+            </div>
+          </form>
+        </div>
+      </section>
     </main>
     <!--main section end-->
 
@@ -65,7 +66,7 @@
   </div>
   <!--container end-->
 
-<!-- <script src="js/vendors/jquery-1.8.3.min.js"></script>
-<script src="js/script.js"></script> -->
+<script src="js/vendors/jquery-1.8.3.min.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
