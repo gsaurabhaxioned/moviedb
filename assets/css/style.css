@@ -280,6 +280,8 @@ main .wrapper {
   background-color: rgb(255, 0, 0, 0.6);
 }
 
+/* login page styling start  */
+
 .login-page {
   min-height: 100vh;
 }
@@ -351,6 +353,8 @@ input[type="submit"]:hover {
   color: #fff;
 }
 
+/* login page styling end  */
+/* movie and tv show category styling start  */
 .movie-content figure,.tvshow-content figure {
   width: 150px;
   height: 150px;
@@ -405,7 +409,7 @@ input[type="submit"]:hover {
   padding: 10px;
   border-radius: 10px;
 }
-
+/* movie and tv show category styling end  */
 
 /*=================================
   main styling ends here
