@@ -110,7 +110,7 @@ li {
 
 header {
   padding: 10px 0;
-  background-color: #a52a2a;
+  background-color: #FA320A;
 }
 
 header .wrapper {
@@ -119,9 +119,8 @@ header .wrapper {
   justify-content: space-between;
 }
 
-.logo img {
-  width: 38%;
-  border-radius: 50px;
+.logo a {
+  color: #fff;
 }
 
 .hamburger,
