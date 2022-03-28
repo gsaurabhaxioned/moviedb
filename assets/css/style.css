@@ -110,7 +110,7 @@ li {
 
 header {
   padding: 10px 0;
-  background-color: #FA320A;
+  background-color: #9A080C;
 }
 
 header .wrapper {
@@ -191,16 +191,21 @@ header .wrapper {
 
 .search-field {
   margin-top: 0;
-  border: none;
+  border-color: transparent;
   background-color: rgb(0, 0, 0, 0.6);
   color: #fff;
 }
 
+.search-field:focus {
+  border-color: #ffff00;
+}
+
 .search-button {
-  padding: 5%;
+  padding: 4%;
+  border: 3px solid rgb(0, 0, 0, 0.6);
   border-radius: 100%;
   background-color: rgb(0, 0, 0, 0.6);
-  color: #fff;
+  color: #ffff00;
   text-indent: -9999px;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
@@ -209,22 +214,33 @@ header .wrapper {
   -moz-transition: all ease-in-out 0.5s;
 }
 
-.search-button:hover::before {
-  color: #00ffff;
-}
-
 .search-button::before {
   content: "\f002";
   float: right;
   font-family: "fontAwesome";
   text-indent: 0;
+  transition: all ease-in-out 0.5s;
+  -webkit-transition: all ease-in-out 0.5s;
+  -ms-transition: all ease-in-out 0.5s;
+  -o-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
+}
+
+.search-button:hover {
+  border-color: #00ffff;
+  background-color: transparent;
+}
+
+.search-button:hover::before {
+  color: #00ffff;
 }
 
 .logout {
   padding: 10px;
-  border: none;
-  background-color: transparent;
-  color: #fff;
+  border: 3px solid #ff0000;
+  border-radius: 12px;
+  background-color: #ff0000;
+  color: #ffff00;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
   -ms-transition: all ease-in-out 0.5s;
@@ -233,10 +249,10 @@ header .wrapper {
 }
 
 .logout:hover {
+  border-color: #00ffff;
+  background-color: transparent;
   color: #00ffff;
 }
-
-
 
 
 /*=================================
@@ -249,13 +265,18 @@ header .wrapper {
 
 main {
   width: 100%;
-  background-image:url(https://us.123rf.com/450wm/hugolacasse/hugolacasse1603/hugolacasse160300013/53756518-illustration-of-a-film-stripe-reel-on-abstract-movie-background.jpg?ver=6);
+  background-image:url(https://motionarray.imgix.net/preview-637482E3duBV7cp_0014.jpg?w=660&q=60&fit=max&auto=format);
   background-size: cover;
   background-attachment: fixed;
-  background-color: #000;
   background-blend-mode: luminosity;
   background-position: center;
   color: #fff;
+}
+
+main .wrapper {
+  padding: 30px;
+  border-radius: 56px;
+  background-color: rgb(255, 0, 0, 0.6);
 }
 
 .login-page {
@@ -287,8 +308,9 @@ h1 {
 }
 
 h2 {
-  color: #ffe4c4;
-  font-size: 35px;
+  color: #00ffff;
+  font-size: 40px;
+  text-align: center;
 }
 
 form {
@@ -327,27 +349,52 @@ input[type="submit"]:hover {
   color: #ff0000;
 }
 
-.movie-content figure {
+.movie-content figure,.tvshow-content figure {
   width: 150px;
   height: 150px;
 }
 
-.movie-slider {
+.movie-slider,.tvshow-slider {
   margin-top: 10px;
   display: flex;
 }
 
-.rate-movie {
+.movie-categoery,.tvshow-categoery {
+  padding: 20px 0;
+}
+
+.rate-movie,.rate-tvshow {
   margin-top: 15px;
   display: block;
+  cursor: pointer;
+}
+
+.rate-movie::before,.rate-tvshow::before {
+  content: "\f005";
+  margin-right: 2%;
+  color: #ffff00;
+  font-family: "fontAwesome";
 }
 
 .addto-watchlist {
   margin-top: 15px;
   display: block;
+  background-color: rgb(0, 0, 0, 0.6);
+  color: #fff;
+}
+
+.addto-watchlist::after {
+  content: "\f067";
+  margin-right: 2%;
+  color: #ffff00;
+  font-family: "fontAwesome";
 }
 
 .top-rated {
+  margin-top: 15px;
+}
+
+.view-more {
   margin-top: 15px;
 }
 
