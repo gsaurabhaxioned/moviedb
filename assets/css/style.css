@@ -153,7 +153,7 @@ header .wrapper {
 }
 
 .menus {
-  flex-basis: 20%;
+  flex-basis: 30%;
 }
 
 .headermenus-show {
@@ -327,6 +327,29 @@ input[type="submit"]:hover {
   color: #ff0000;
 }
 
+.movie-content figure {
+  width: 150px;
+  height: 150px;
+}
+
+.movie-slider {
+  margin-top: 10px;
+  display: flex;
+}
+
+.rate-movie {
+  margin-top: 15px;
+  display: block;
+}
+
+.addto-watchlist {
+  margin-top: 15px;
+  display: block;
+}
+
+.top-rated {
+  margin-top: 15px;
+}
 
 
 
