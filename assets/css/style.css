@@ -426,10 +426,8 @@ footer .wrapper {
   justify-content: space-between;
 }
 
-
-
 .copyright {
-  color: #fff;
+  color: #ffff00;
   font-size: 15px;
 }
 
@@ -464,7 +462,21 @@ footer .wrapper {
 .social-links li:nth-child(3) a::before {
   content: "\f099";
 }
- /*=================================
+
+.footer-links {
+  margin: 0 2% 0 auto;
+}
+
+.footer-links li a {
+  padding-right: 5px;
+  color: #ffff00;
+}
+
+.footer-links li:first-child {
+border-right: 1px solid #ffff00;
+}
+
+/*=================================
   footer styling ends here
 =================================*/ 
 
