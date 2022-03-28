@@ -108,6 +108,92 @@ li {
   Header styling starts here
 =================================*/
 
+header {
+  padding: 10px 0;
+  background-color: #a52a2a;
+}
+
+header .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo img {
+  width: 38%;
+  border-radius: 50px;
+}
+
+.hamburger,
+.cross {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  display: none;
+  text-indent: -9999px;
+}
+
+.hamburger::before,
+.cross::before {
+  content: "\f0c9";
+  float: right;
+  color: #fff;
+  font-family: "fontAwesome";
+  text-indent: 0;
+}
+
+.cross::before {
+  content: "\f00d";
+}
+
+.menus {
+  flex-basis: 20%;
+}
+
+.headermenus-show {
+  width: 100%;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  background-color: #ff0000;
+  transform: translateX(0);
+}
+
+.menus ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menus ul li a {
+  color: #ffff00;
+  transition: all ease-in-out 0.5s;
+  -webkit-transition: all ease-in-out 0.5s;
+  -ms-transition: all ease-in-out 0.5s;
+  -o-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
+}
+
+.menus ul li a:hover {
+  color: #00ffff;
+}
+
+.logout {
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  transition: all ease-in-out 0.5s;
+  -webkit-transition: all ease-in-out 0.5s;
+  -ms-transition: all ease-in-out 0.5s;
+  -o-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
+}
+
+.logout:hover {
+  color: #00ffff;
+}
 
 
 
