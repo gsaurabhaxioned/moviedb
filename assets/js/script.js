@@ -5,6 +5,24 @@ $(document).ready(function(){
         $(this).toggleClass("cross");
     });
 
+    let api_key ="8d6f976a3d568729504eb85502e74226";
+    $(".slider").html("");
+
+    // function calls to display movies according to categories 
+    if($(".movie-categoery").length > 0){
+    displayMovies("top_rated","top-rated-movies");
+    displayMovies("popular","most-popular-movies");
+    displayMovies("now_playing","now-playing-movies");
+    displayMovies("upcoming","upcoming-movies");
+    }
+
+     // function calls to display tv shows according to categories 
+    if($(".tvshow-categoery").length > 0) {
+      displayTvshows("on_the_air","on-air");
+      displayTvshows("airing_today","airing-today");
+    }
+
+// initialising variables for login form 
     let loginform = $('.loginform'),
     username = $('.username'),
     password = $('.password'),
@@ -66,7 +84,7 @@ loginform.submit((event) => {
 
 $('.slider').slick({
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 300,
     slidesToShow: 4,
     slidesToScroll: 4,
@@ -100,7 +118,75 @@ $('.slider').slick({
     ]
   });
 })
+// function to display movies according to categories
+function displayMovies(category,classname){
+  let api_key ="8d6f976a3d568729504eb85502e74226";
+    $.ajax({
+      url :"https://api.themoviedb.org/3/movie/"+category+"?api_key="+api_key+"&language=en-US&page=1",
+      type :"GET",
+      success :(data)=>{
+       let result = data.results;
+        result.forEach(i=>{
+          $("."+classname+" .slider").slick('slickAdd',`
+          <div class="movie-content ">
+          <figure>
+              <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
+          </figure>
+          <div class="user-actions">
+              <span class="rate-movie">rate us</span>
+              <button class="addto-watchlist">
+                  add to Watchlist
+              </button>
+          </div>
+      </div>
+          `);
+        })
 
+        $(".slider").slick();
+      },
+      error: (error)=>{
+        alert("something went wrong");
+        console.log(error);
+      }
+
+    });
+
+}
+
+// function to tv shows according to categories
+function displayTvshows(category,classname){
+  let api_key ="8d6f976a3d568729504eb85502e74226";
+    $.ajax({
+      url :" https://api.themoviedb.org/3/tv/"+category+"?api_key="+api_key+"&language=en-US&page=1",
+      type :"GET",
+      success :(data)=>{
+       let result = data.results;
+        result.forEach(i=>{
+          $("."+classname+" .slider").slick('slickAdd',`
+          <div class="movie-content ">
+          <figure>
+              <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
+          </figure>
+          <div class="user-actions">
+              <span class="rate-movie">rate us</span>
+              <button class="addto-watchlist">
+                  add to Watchlist
+              </button>
+          </div>
+      </div>
+          `);
+        })
+
+        $(".slider").slick();
+      },
+      error: (error)=>{
+        alert("something went wrong");
+        console.log(error);
+      }
+
+    });
+
+}
 
 
 
