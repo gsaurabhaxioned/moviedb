@@ -227,6 +227,9 @@ $(document).ready(function () {
       url: "https://api.themoviedb.org/3/" + content_type + "/" + content_id + "?api_key=" + api_key + "&language=en-US",
       type: "GET",
       success: (data) => {
+        if(!(data.length > 0)){
+          $(".details .wrapper").append(`<h2 class="no-deails">Sorry,Details for this program/movie currently unavailable,you can try for another one </h2>`);
+        }
         if (content_type === "movie") {
           console.log(data.production_countries);
           $(".details .wrapper").append(`
