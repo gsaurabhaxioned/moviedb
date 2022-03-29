@@ -226,12 +226,19 @@ $(document).ready(function () {
       type: "GET",
       success: (data) => {
         if(content_type === "movie") {
+          console.log(data.production_countries);
           $(".details .wrapper").append(`
             <h2>${data.title}</h2>
             <figure>
             <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie Poster">
             </figure>
             <p>${data.overview}</p>
+            <div class="more-details">
+            <span class="status">Status:${data.status}</span>
+            <span class="release-date">Release date: ${data.release_date}</span>
+            <span class="production-company">Production company: ${data.production_companies[0].name}</span>
+            <span class="production-country">Production country: ${data.production_countries[0].name}</span>
+            </div>
           `);
         }
       }
