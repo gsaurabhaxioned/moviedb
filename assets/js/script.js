@@ -83,67 +83,58 @@ $(document).ready(function () {
 
   // slick slider code 
 
-  $('.slider').slick({
-    dots: true,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    responsive: [{
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  });
+//   $('.slider').slick({
+//     dots: true,
+//     infinite: true,
+//     speed: 300,
+//     slidesToShow: 4,
+//     slidesToScroll: 4,
+//     responsive: [{
+//         breakpoint: 1024,
+//         settings: {
+//           slidesToShow: 3,
+//           slidesToScroll: 3,
+//           infinite: true,
+//           dots: true
+//         }
+//       },
+//       {
+//         breakpoint: 600,
+//         settings: {
+//           slidesToShow: 2,
+//           slidesToScroll: 2
+//         }
+//       },
+//       {
+//         breakpoint: 480,
+//         settings: {
+//           slidesToShow: 1,
+//           slidesToScroll: 1
+//         }
+//       }
+//     ]
+//   });
 
-
-
-})
-
-
-
-// code for paginated list page 
 let prev = $(".prev"),
 current = $(".curent"),
 next = $(".next"),
+total_pages =100,
 url = new URL(window.location.href),
 urlstring = url.search.slice(1),
 searchurlparam = new URLSearchParams(urlstring),
 content_type = searchurlparam.get('type'),
 category = searchurlparam.get('cat'),
-page_no = searchurlparam.get('page'),
+page_no = parseInt(searchurlparam.get('page'));
 api_key = "8d6f976a3d568729504eb85502e74226";
 
-if($(".paginated-list").length > 0){
-  console.log(page);
+if($(".paginated-list").length > 0) {
 $.ajax({
   url: "https://api.themoviedb.org/3/"+content_type+"/" + category + "?api_key=" + api_key + "&language=en-US&page=1",
   type: "GET",
   success: (data) => {
     let result = data.results,
-    current_page =result.page,
-    next_page = current_page + 1,
-    prev_page = current_page - 1,
-    total_pages = result.total_pages;
+    total_pages = data.total_pages;
+    console.log(result);
     result.forEach(i => {
       $(".paginated-contents").append(`
         <div class="page-item ">
@@ -167,13 +158,40 @@ $.ajax({
   }
 
 });
+}
+
+$(".prev").addClass("disabled");
 
 next.click(()=>{
-  if(next_page <= total_pages){
-    gotoPage(next_page);
-  }
+  $(".prev").removeClass("disabled");
+  page_no = parseInt(page_no+1);
+    console.log(page_no);
+    console.log(total_pages);
+    if(page_no < total_pages){
+    gotoPage(page_no,content_type,category);
+    }else {
+      $(".next").addClass("disabled");
+    }
+  $(".current").html(page_no);
 })
-}
+
+prev.click(()=>{
+    if(page_no !== 1){
+    page_no = parseInt(page_no-1);
+    console.log(page_no);
+    gotoPage(page_no,content_type,category);
+  }else {
+    $(".prev").addClass("disabled");
+  }
+  $(".current").html(page_no);
+});
+
+ })
+
+
+
+// code for paginated list page 
+
 
 
 // function to display movies according to categories
@@ -246,4 +264,39 @@ function displayTvshows(category, classname) {
 
   });
 
+}
+
+// function for accessing next or previous page 
+
+const gotoPage = (page,content_type,category) => {
+  $(".paginated-contents").html("");
+  let api_key = "8d6f976a3d568729504eb85502e74226";
+  $.ajax({
+    url: "https://api.themoviedb.org/3/"+content_type+"/" + category + "?api_key=" + api_key + "&language=en-US&page="+page,
+    type: "GET",
+    success: (data) => {
+      let result = data.results;
+      result.forEach(i => {
+        $(".paginated-contents").append(`
+          <div class="page-item ">
+          <a href="details.html?id=${i.id}" title="Get Details" target="_self" class="page-item-image">
+              <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
+          </a>
+           <a href="details.html?id=${i.id} title="Get Details" target="_self" class="pagination-title">${i.title}</a>
+          <div class="user-actions-pagination">
+              <span class="rate-us">rate us</span>
+              <button class="addto-watchlist">
+                  add to Watchlist
+              </button>
+          </div>
+      </div>
+          `);
+      })
+    },
+    error: (error) => {
+      alert("something went wrong");
+      console.log(error);
+    }
+  
+  });
 }
