@@ -124,10 +124,41 @@ let prev = $(".prev"),
   current_page = 1,
   next_page = 2,
   prev_page = 3,
-  total_pages = 100;
-  $(".view-more").click(()=>{
-    console.log(this.classname);
+  total_pages = 100,
+  url = new URL(window.location.href),
+  urlstring = url.search.slice(1),
+  searchurlparam = new URLSearchParams(urlstring),
+  paramvalue = searchurlparam.get('cat');
+  $.ajax({
+    url: "https://api.themoviedb.org/3/movie/" + category + "?api_key=" + api_key + "&language=en-US&page=1",
+    type: "GET",
+    success: (data) => {
+      let result = data.results;
+      result.forEach(i => {
+        $(".paginated-contents").append(`
+          <div class="movie-content ">
+          <figure>
+              <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
+          </figure>
+          <div class="user-actions">
+              <span class="rate-movie">rate us</span>
+              <button class="addto-watchlist">
+                  add to Watchlist
+              </button>
+          </div>
+      </div>
+          `);
+      })
+
+      $(".slider").slick();
+    },
+    error: (error) => {
+      alert("something went wrong");
+      console.log(error);
+    }
+
   });
+
 
 // function to display movies according to categories
 function displayMovies(category, classname) {
