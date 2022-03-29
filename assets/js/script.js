@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $(".hamburger").click(function () {
+  $(".hamburger").click(() => {
     $(".menus").toggleClass("headermenus-show");
     $(".menus").toggleClass("headermenus");
     $(this).toggleClass("cross");
@@ -14,6 +14,7 @@ $(document).ready(function () {
     displayMovies("popular", "most-popular-movies");
     displayMovies("now_playing", "now-playing-movies");
     displayMovies("upcoming", "upcoming-movies");
+    displayNews("trending-news");
   }
 
   // function calls to display tv shows according to categories 
@@ -32,7 +33,7 @@ $(document).ready(function () {
   localStorage.setItem('password1', '123456');
   console.log(username);
 
-  //blur validation
+  // validation on input boxes focusout
   username.focusout(() => {
     usererror.html("");
     passerror.html("");
@@ -206,7 +207,7 @@ $(document).ready(function () {
         }
       },
       error: (error) => {
-        alert("something went wrong");
+        alert("something went wrong,try again");
         console.log(error);
       }
 
@@ -264,6 +265,10 @@ $(document).ready(function () {
           }
 
         }
+      },
+      error: (error) => {
+        alert("something went wrong,try again");
+        console.log(error);
       }
 
     });
@@ -271,7 +276,7 @@ $(document).ready(function () {
 })
 
 // function to display movies according to categories
-function displayMovies(category, classname) {
+const displayMovies = (category, classname) => {
   let api_key = "8d6f976a3d568729504eb85502e74226";
   $.ajax({
     url: "https://api.themoviedb.org/3/movie/" + category + "?api_key=" + api_key + "&language=en-US&page=1",
@@ -294,20 +299,17 @@ function displayMovies(category, classname) {
       </div>
           `);
       })
-
       $(".slider").slick();
     },
     error: (error) => {
-      alert("something went wrong");
+      alert("something went wrong,try again");
       console.log(error);
     }
-
   });
-
 }
 
 // function to tv shows according to categories
-function displayTvshows(category, classname) {
+const displayTvshows = (category, classname) => {
   let api_key = "8d6f976a3d568729504eb85502e74226";
   $.ajax({
     url: " https://api.themoviedb.org/3/tv/" + category + "?api_key=" + api_key + "&language=en-US&page=1",
@@ -330,16 +332,49 @@ function displayTvshows(category, classname) {
       </div>
           `);
       })
+      $(".slider").slick();
+    },
+    error: (error) => {
+      alert("something went wrong,try again");
+      console.log(error);
+    }
+  });
+}
+
+// function to display trending programs
+
+const displayNews = (classname) => {
+  let api_key = "8d6f976a3d568729504eb85502e74226";
+  $.ajax({
+    url: " https://api.themoviedb.org/3/trending/all/day?api_key=" + api_key + "&language=en-US&page=1",
+    type: "GET",
+    success: (data) => {
+      console.log(data.results[0]);
+      let result = data.results;
+      result.forEach(i => {
+        $("." + classname + " .slider").slick('slickAdd', `
+          <div class="movie-content ">
+          <a href="details.html?id=${i.id}" title="Get Details" target="_self">
+              <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
+          </a>
+          <a href="details.html?id=${i.id}" title="Get Details" target="_self" class="title">${i.title}</a>
+          <div class="user-actions">
+              <span class="rate-movie">rate us</span>
+              <button class="addto-watchlist">
+                  add to Watchlist
+              </button>
+          </div>
+      </div>
+          `);
+      })
 
       $(".slider").slick();
     },
     error: (error) => {
-      alert("something went wrong");
+      alert("something went wrong,try again");
       console.log(error);
     }
-
   });
-
 }
 
 // function for accessing next or previous page 
@@ -391,7 +426,7 @@ const gotoPage = (page, content_type, category) => {
       }
     },
     error: (error) => {
-      alert("something went wrong");
+      alert("something went wrong,try again");
       console.log(error);
     }
 
