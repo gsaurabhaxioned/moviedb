@@ -500,11 +500,21 @@ input[type="submit"]:hover {
   justify-content: space-around;
 }
 
-.page-item figure,.title {
+.page-item-image,.pagination-title {
   margin-right: auto;
 }
 
-.title,.rate-us {
+.pagination-title {
+  color: #ffa500;
+}
+
+.title {
+  margin-top: 20px;
+  color: #ffa500;
+  font-size: 20px;
+}
+
+.title,.rate-us,.pagination-title {
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
   -ms-transition: all ease-in-out 0.5s;
@@ -516,7 +526,11 @@ input[type="submit"]:hover {
   color: #00ffff;
 }
 
-.page-item figure {
+.pagination-title:hover {
+  color: #00ffff;
+}
+
+.page-item-image{
   width: 25%;
 }
 
