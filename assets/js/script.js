@@ -54,6 +54,7 @@ password.focusout(() => {
         $('.password').addClass("errorbox");
     }
 })
+
 //login validation
 loginform.submit((event) => {
     $('.username').removeClass('errorbox');
@@ -118,6 +119,7 @@ $('.slider').slick({
     ]
   });
 })
+
 // function to display movies according to categories
 function displayMovies(category,classname){
   let api_key ="8d6f976a3d568729504eb85502e74226";
