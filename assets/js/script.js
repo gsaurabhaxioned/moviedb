@@ -140,10 +140,10 @@ let prev = $(".prev"),
       result.forEach(i => {
         $(".paginated-contents").append(`
           <div class="page-item ">
-          <figure>
+          <a href="details.html?id=${i.id}" title="Get Details" target="_self" class="page-item-image">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
-          </figure>
-           <span class="title">${i.title}</span>
+          </a>
+           <a href="details.html?id=${i.id} title="Get Details" target="_self" class="pagination-title">${i.title}</a>
           <div class="user-actions-pagination">
               <span class="rate-us">rate us</span>
               <button class="addto-watchlist">
@@ -174,9 +174,10 @@ function displayMovies(category, classname) {
       result.forEach(i => {
         $("." + classname + " .slider").slick('slickAdd', `
           <div class="movie-content ">
-          <figure>
+          <a href="details.html?id=${i.id}" title="Get Details" target="_self">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
-          </figure>
+          </a>
+          <a href="details.html?id=${i.id} title="Get Details" target="_self" class="title">${i.title}</a>
           <div class="user-actions">
               <span class="rate-movie">rate us</span>
               <button class="addto-watchlist">
@@ -209,9 +210,10 @@ function displayTvshows(category, classname) {
       result.forEach(i => {
         $("." + classname + " .slider").slick('slickAdd', `
           <div class="movie-content ">
-          <figure>
+          <a href="details.html?id=${i.id}" title="Get Details" target="_self">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
-          </figure>
+          </a>
+          <a href="details.html?id=${i.id} title="Get Details" target="_self" class="title">${i.title}</a>
           <div class="user-actions">
               <span class="rate-movie">rate us</span>
               <button class="addto-watchlist">
