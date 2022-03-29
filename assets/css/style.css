@@ -568,7 +568,7 @@ input[type="submit"]:hover {
   width: 50%;
 }
 
-.details p {
+.details-overview {
   width: 50%;
   color: #00ffff;
   font-size: 30px;
@@ -586,7 +586,10 @@ input[type="submit"]:hover {
 }
 
 .text-red {
+  margin-top: 10px;
   color: #ff0000;
+  display: block;
+  text-shadow: 10px 10px 10px;
 }
 
 /* details page styling end  */
