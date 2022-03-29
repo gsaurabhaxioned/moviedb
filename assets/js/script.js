@@ -9,7 +9,7 @@ $(document).ready(function(){
     $(".slider").html("");
 
     // function calls to display movies according to categories 
-    if($(".movie-categoery").length > 0){
+    if($(".movie-category").length > 0){
     displayMovies("top_rated","top-rated-movies");
     displayMovies("popular","most-popular-movies");
     displayMovies("now_playing","now-playing-movies");
@@ -17,7 +17,7 @@ $(document).ready(function(){
     }
 
      // function calls to display tv shows according to categories 
-    if($(".tvshow-categoery").length > 0) {
+    if($(".tvshow-category").length > 0) {
       displayTvshows("on_the_air","on-air");
       displayTvshows("airing_today","airing-today");
     }
