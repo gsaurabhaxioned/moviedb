@@ -574,6 +574,21 @@ input[type="submit"]:hover {
   font-size: 30px;
 }
 
+.more-details {
+  text-align: center;
+}
+
+.more-details p {
+  margin-top: 20px;
+  display: block;
+  color: yellow;
+  font-size: 30PX;
+}
+
+.text-red {
+  color: #ff0000;
+}
+
 /* details page styling end  */
 
 /*=================================
