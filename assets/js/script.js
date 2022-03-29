@@ -184,7 +184,9 @@ $(document).ready(function () {
     </div>
         `);
           })
-        } else if (content_type === "tv") {
+        }
+
+        if (content_type === "tv") {
           result.forEach(i => {
             $(".paginated-contents").append(`
         <div class="page-item ">
@@ -225,21 +227,36 @@ $(document).ready(function () {
       url: "https://api.themoviedb.org/3/" + content_type + "/" + content_id + "?api_key=" + api_key + "&language=en-US",
       type: "GET",
       success: (data) => {
-        if(content_type === "movie") {
+        if (content_type === "movie") {
           console.log(data.production_countries);
           $(".details .wrapper").append(`
             <h2>${data.title}</h2>
             <figure>
             <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie Poster">
             </figure>
-            <p>${data.overview}</p>
+            <p class="details-overview">${data.overview}</p>
             <div class="more-details">
-            <span class="status">Status:${data.status}</span>
-            <span class="release-date">Release date: ${data.release_date}</span>
-            <span class="production-company">Production company: ${data.production_companies[0].name}</span>
-            <span class="production-country">Production country: ${data.production_countries[0].name}</span>
+            <p class="status">Status:<span class="text-red">${data.status}</span></p>
+            <p class="release-date">Release date: <span class="text-red">${data.release_date}</span></p>
+            <p class="production-company">Production company: <span class="text-red">${data.production_companies[0].name}</span></p>
+            <p class="production-country">Production country: <span class="text-red">${data.production_countries[0].name}</span></p>
             </div>
           `);
+        }
+        if (content_type === "tv") {
+          $(".details .wrapper").append(`
+          <h2>${data.name}</h2>
+          <figure>
+          <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie Poster">
+          </figure>
+          <p class="details-overview">${data.overview}</p>
+          <div class="more-details">
+          <p class="status">Status:<span class="text-red">${data.status}</span></p>
+          <p class="first-air-date">First Air date: <span class="text-red">${data.first_air_date}</span></p>
+          <p class="production-company">Production company: <span class="text-red">${data.production_companies[0].name}</span></p>
+          <p class="production-country">Production country: <span class="text-red">${data.production_countries[0].name}</span></p>
+          </div>
+        `);
         }
       }
     });
@@ -345,7 +362,9 @@ const gotoPage = (page, content_type, category) => {
       </div>
           `);
         })
-      } else if (content_type === "tv") {
+      }
+
+      if (content_type === "tv") {
         result.forEach(i => {
           $(".paginated-contents").append(`
           <div class="page-item ">
