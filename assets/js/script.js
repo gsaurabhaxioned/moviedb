@@ -227,9 +227,7 @@ $(document).ready(function () {
       url: "https://api.themoviedb.org/3/" + content_type + "/" + content_id + "?api_key=" + api_key + "&language=en-US",
       type: "GET",
       success: (data) => {
-        if(!(data.length > 0)){
-          $(".details .wrapper").append(`<h2 class="no-deails">Sorry,Details for this program/movie currently unavailable,you can try for another one </h2>`);
-        }
+        console.log(data);
         if (content_type === "movie") {
           console.log(data.production_countries);
           $(".details .wrapper").append(`
@@ -256,12 +254,18 @@ $(document).ready(function () {
           <div class="more-details">
           <p class="status">Status:<span class="text-red">${data.status}</span></p>
           <p class="first-air-date">First Air date: <span class="text-red">${data.first_air_date}</span></p>
-          <p class="production-company">Production company: <span class="text-red">${data.production_companies[0].name}</span></p>
-          <p class="production-country">Production country: <span class="text-red">${data.production_countries[0].name}</span></p>
           </div>
         `);
+          if (data.production_companies[0].name.length > 0 && data.production_countries[0].name.length > 0) {
+            $(".details .wrapper .more-details").append(`
+            <p class="production-company">Production company: <span class="text-red">${data.production_companies[0].name}</span></p>
+            <p class="production-country">Production country: <span class="text-red">${data.production_countries[0].name}</span></p>
+            `);
+          }
+
         }
       }
+
     });
   }
 })
