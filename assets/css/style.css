@@ -104,6 +104,20 @@ li {
   width: 86%; 
   margin: 0 auto;
 }
+
+/* *for headers  */
+h1 {
+  font-size: 45px;
+  text-align: center;
+}
+
+h2 {
+  color: #00ffff;
+  font-size: 40px;
+  text-align: center;
+  text-shadow: 10px 10px 10px #00ffff;
+}
+
 /*=================================
   Header styling starts here
 =================================*/
@@ -303,17 +317,6 @@ main .wrapper {
   border: 5px solid #ff0000;
 }
 
-h1 {
-  font-size: 45px;
-  text-align: center;
-}
-
-h2 {
-  color: #00ffff;
-  font-size: 40px;
-  text-align: center;
-  text-shadow: 10px 10px 10px #00ffff;
-}
 
 form {
   width: 50%;
@@ -353,7 +356,7 @@ input[type="submit"]:hover {
 }
 
 /* login page styling end  */
-/* movie and tv show category styling start  */
+/* movie and tv show category pages styling start  */
 .movie-content {
   text-align: center;
 }
@@ -446,6 +449,43 @@ input[type="submit"]:hover {
 }
 
 /* movie and tv show category styling end  */
+/* paginated list page styling start  */
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-controls span {
+  padding: 0 10px;
+  cursor: pointer;
+  transition: all ease-in-out 0.5s;
+  -webkit-transition: all ease-in-out 0.5s;
+  -ms-transition: all ease-in-out 0.5s;
+  -o-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
+}
+
+.pagination-controls span:hover {
+  color: #00ffff;
+}
+
+.disabled {
+  cursor:not-allowed;
+  opacity: 0.5;
+}
+
+.current {
+  padding: 1px 8px;
+  border: 2px solid #ffff00;
+  border-radius: 100%;
+}
+
+.current:hover {
+  border-color: #00ffff;
+}
+/* paginated list page styling end  */
 
 /*=================================
   main styling ends here
