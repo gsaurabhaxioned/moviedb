@@ -550,6 +550,31 @@ input[type="submit"]:hover {
   color: #00ffff;
 }
 /* paginated list page styling end  */
+/* details page styling start  */
+
+.details .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 50px;
+}
+
+.details .wrapper h2 {
+  color: orange;
+  text-shadow: 10px 10px 10px;
+}
+
+.details figure {
+  width: 50%;
+}
+
+.details p {
+  width: 50%;
+  color: #00ffff;
+  font-size: 30px;
+}
+
+/* details page styling end  */
 
 /*=================================
   main styling ends here
