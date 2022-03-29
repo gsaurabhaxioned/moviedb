@@ -114,52 +114,65 @@ $(document).ready(function () {
       }
     ]
   });
+
+
+
 })
 
+
+
 // code for paginated list page 
-
 let prev = $(".prev"),
-  current = $(".curent"),
-  next = $(".next"),
-  url = new URL(window.location.href),
-  urlstring = url.search.slice(1),
-  searchurlparam = new URLSearchParams(urlstring),
-  content_type = searchurlparam.get('type'),
-  category = searchurlparam.get('cat'),
-  api_key = "8d6f976a3d568729504eb85502e74226";
-  if($(".paginated-list").length > 0){
-  $.ajax({
-    url: "https://api.themoviedb.org/3/"+content_type+"/" + category + "?api_key=" + api_key + "&language=en-US&page=1",
-    type: "GET",
-    success: (data) => {
-      let result = data.results,
-      current_page =result.page,
-      next_page = current_page + 1,
-      prev_page = current_page - 1,
-      total_pages = result.total_pages;
-      result.forEach(i => {
-        $(".paginated-contents").append(`
-          <div class="page-item ">
-          <a href="details.html?id=${i.id}" title="Get Details" target="_self" class="page-item-image">
-              <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
-          </a>
-           <a href="details.html?id=${i.id} title="Get Details" target="_self" class="pagination-title">${i.title}</a>
-          <div class="user-actions-pagination">
-              <span class="rate-us">rate us</span>
-              <button class="addto-watchlist">
-                  add to Watchlist
-              </button>
-          </div>
-      </div>
-          `);
-      })
-    },
-    error: (error) => {
-      alert("something went wrong");
-      console.log(error);
-    }
+current = $(".curent"),
+next = $(".next"),
+url = new URL(window.location.href),
+urlstring = url.search.slice(1),
+searchurlparam = new URLSearchParams(urlstring),
+content_type = searchurlparam.get('type'),
+category = searchurlparam.get('cat'),
+page_no = searchurlparam.get('page'),
+api_key = "8d6f976a3d568729504eb85502e74226";
 
-  });
+if($(".paginated-list").length > 0){
+  console.log(page);
+$.ajax({
+  url: "https://api.themoviedb.org/3/"+content_type+"/" + category + "?api_key=" + api_key + "&language=en-US&page=1",
+  type: "GET",
+  success: (data) => {
+    let result = data.results,
+    current_page =result.page,
+    next_page = current_page + 1,
+    prev_page = current_page - 1,
+    total_pages = result.total_pages;
+    result.forEach(i => {
+      $(".paginated-contents").append(`
+        <div class="page-item ">
+        <a href="details.html?id=${i.id}" title="Get Details" target="_self" class="page-item-image">
+            <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
+        </a>
+         <a href="details.html?id=${i.id} title="Get Details" target="_self" class="pagination-title">${i.title}</a>
+        <div class="user-actions-pagination">
+            <span class="rate-us">rate us</span>
+            <button class="addto-watchlist">
+                add to Watchlist
+            </button>
+        </div>
+    </div>
+        `);
+    })
+  },
+  error: (error) => {
+    alert("something went wrong");
+    console.log(error);
+  }
+
+});
+
+next.click(()=>{
+  if(next_page <= total_pages){
+    gotoPage(next_page);
+  }
+})
 }
 
 
