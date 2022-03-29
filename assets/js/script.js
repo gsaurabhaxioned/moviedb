@@ -121,27 +121,31 @@ $(document).ready(function () {
 let prev = $(".prev"),
   current = $(".curent"),
   next = $(".next"),
-  current_page = 1,
-  next_page = 2,
-  prev_page = 3,
-  total_pages = 100,
   url = new URL(window.location.href),
   urlstring = url.search.slice(1),
   searchurlparam = new URLSearchParams(urlstring),
-  paramvalue = searchurlparam.get('cat');
+  content_type = searchurlparam.get('type'),
+  category = searchurlparam.get('cat'),
+  api_key = "8d6f976a3d568729504eb85502e74226";
+  if($(".paginated-list").length > 0){
   $.ajax({
-    url: "https://api.themoviedb.org/3/movie/" + category + "?api_key=" + api_key + "&language=en-US&page=1",
+    url: "https://api.themoviedb.org/3/"+content_type+"/" + category + "?api_key=" + api_key + "&language=en-US&page=1",
     type: "GET",
     success: (data) => {
-      let result = data.results;
+      let result = data.results,
+      current_page =result.page,
+      next_page = current_page + 1,
+      prev_page = current_page - 1,
+      total_pages = result.total_pages;
       result.forEach(i => {
         $(".paginated-contents").append(`
-          <div class="movie-content ">
+          <div class="page-item ">
           <figure>
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </figure>
-          <div class="user-actions">
-              <span class="rate-movie">rate us</span>
+           <span class="title">${i.title}</span>
+          <div class="user-actions-pagination">
+              <span class="rate-us">rate us</span>
               <button class="addto-watchlist">
                   add to Watchlist
               </button>
@@ -149,8 +153,6 @@ let prev = $(".prev"),
       </div>
           `);
       })
-
-      $(".slider").slick();
     },
     error: (error) => {
       alert("something went wrong");
@@ -158,6 +160,7 @@ let prev = $(".prev"),
     }
 
   });
+}
 
 
 // function to display movies according to categories
