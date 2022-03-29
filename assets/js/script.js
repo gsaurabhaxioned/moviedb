@@ -82,38 +82,41 @@ $(document).ready(function () {
   })
 
   // slick slider code 
+  if($(".movie-category").length > 0 || $(".tvshow-category").length > 0 ) {
 
-//   $('.slider').slick({
-//     dots: true,
-//     infinite: true,
-//     speed: 300,
-//     slidesToShow: 4,
-//     slidesToScroll: 4,
-//     responsive: [{
-//         breakpoint: 1024,
-//         settings: {
-//           slidesToShow: 3,
-//           slidesToScroll: 3,
-//           infinite: true,
-//           dots: true
-//         }
-//       },
-//       {
-//         breakpoint: 600,
-//         settings: {
-//           slidesToShow: 2,
-//           slidesToScroll: 2
-//         }
-//       },
-//       {
-//         breakpoint: 480,
-//         settings: {
-//           slidesToShow: 1,
-//           slidesToScroll: 1
-//         }
-//       }
-//     ]
-//   });
+  $('.slider').slick({
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    responsive: [{
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  });
+  }
+// code for paginated list page 
 
 let prev = $(".prev"),
 current = $(".curent"),
@@ -138,10 +141,10 @@ $.ajax({
     result.forEach(i => {
       $(".paginated-contents").append(`
         <div class="page-item ">
-        <a href="details.html?id=${i.id}" title="Get Details" target="_self" class="page-item-image">
+        <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="page-item-image">
             <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
         </a>
-         <a href="details.html?id=${i.id} title="Get Details" target="_self" class="pagination-title">${i.title}</a>
+         <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="pagination-title">${i.title}</a>
         <div class="user-actions-pagination">
             <span class="rate-us">rate us</span>
             <button class="addto-watchlist">
@@ -188,12 +191,6 @@ prev.click(()=>{
 
  })
 
-
-
-// code for paginated list page 
-
-
-
 // function to display movies according to categories
 function displayMovies(category, classname) {
   let api_key = "8d6f976a3d568729504eb85502e74226";
@@ -205,10 +202,10 @@ function displayMovies(category, classname) {
       result.forEach(i => {
         $("." + classname + " .slider").slick('slickAdd', `
           <div class="movie-content ">
-          <a href="details.html?id=${i.id}" title="Get Details" target="_self">
+          <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
-          <a href="details.html?id=${i.id} title="Get Details" target="_self" class="title">${i.title}</a>
+          <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="title">${i.title}</a>
           <div class="user-actions">
               <span class="rate-movie">rate us</span>
               <button class="addto-watchlist">
@@ -241,10 +238,10 @@ function displayTvshows(category, classname) {
       result.forEach(i => {
         $("." + classname + " .slider").slick('slickAdd', `
           <div class="movie-content ">
-          <a href="details.html?id=${i.id}" title="Get Details" target="_self">
+          <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
-          <a href="details.html?id=${i.id} title="Get Details" target="_self" class="title">${i.title}</a>
+          <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="title">${i.title}</a>
           <div class="user-actions">
               <span class="rate-movie">rate us</span>
               <button class="addto-watchlist">
@@ -279,10 +276,10 @@ const gotoPage = (page,content_type,category) => {
       result.forEach(i => {
         $(".paginated-contents").append(`
           <div class="page-item ">
-          <a href="details.html?id=${i.id}" title="Get Details" target="_self" class="page-item-image">
+          <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="page-item-image">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
-           <a href="details.html?id=${i.id} title="Get Details" target="_self" class="pagination-title">${i.title}</a>
+           <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="pagination-title">${i.title}</a>
           <div class="user-actions-pagination">
               <span class="rate-us">rate us</span>
               <button class="addto-watchlist">
