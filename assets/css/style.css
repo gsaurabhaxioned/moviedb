@@ -389,7 +389,7 @@ input[type="submit"]:hover {
   font-family: "fontAwesome";
 }
 
-.addto-watchlist,.view-details {
+.addto-watchlist,.view-details,.removefrom-watchlist {
   padding: 10px;
   border-radius: 10px;
   margin-top: 15px;
@@ -503,7 +503,7 @@ input[type="submit"]:hover {
   margin-right: auto;
 }
 
-.pagination-title {
+.pagination-title,.wa {
   color: #ffa500;
 }
 
@@ -610,7 +610,42 @@ input[type="submit"]:hover {
 }
 
 /* details page styling end  */
+/* watchlist page styling start  */
 
+.watchlist-item {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  row-gap: 20px;
+}
+
+.watchlist-item-image {
+  width: 25%;
+  margin-right: auto;
+}
+
+.watchlist-title {
+  margin-right: auto;
+  color: #ffa500;
+  font-size: 20px;
+  transition: all ease-in-out 0.5s;
+  -webkit-transition: all ease-in-out 0.5s;
+  -ms-transition: all ease-in-out 0.5s;
+  -o-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
+}
+
+.watchlist-title:hover {
+  color: #00ffff;
+}
+.watchlist-id {
+  display: none;
+}
+
+
+/* watchlist page styling end   */
 /*=================================
   main styling ends here
 =================================*/
