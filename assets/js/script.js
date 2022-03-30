@@ -87,6 +87,11 @@ $(document).ready(function () {
     }
   })
 
+  // js code for search functionality 
+  $(".search-button").click(()=>{
+      $("")
+  }); 
+
   // slick slider code 
   if ($(".movie-category").length > 0 || $(".tvshow-category").length > 0) {
 
