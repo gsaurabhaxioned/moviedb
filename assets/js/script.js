@@ -8,10 +8,14 @@ $(document).ready(function () {
   });
 
   // code for add to watchlist/favouries local storage
+  let favourites=[];
   if(localStorage.getItem("favourites") === null) {
     favourites = [];
   }else {
-    favourites = JSON.parse(localStorage.getItem("favourites"));
+    favourites.push(localStorage.getItem("favourites"));
+    favourites.forEach(i=>{
+      console.log(i);
+    })
   }
 
 
@@ -293,7 +297,7 @@ $(document).ready(function () {
             <h2>${data.title}</h2>
             <button class="addto-watchlist">add to watchlist</button>
             <span class="item-id">${data.id}</span>
-            <span class="rate-movie">rate this movie</span>
+            <span class="rate-us">rate this movie</span>
             <figure>
             <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie Poster">
             </figure>
@@ -312,7 +316,7 @@ $(document).ready(function () {
           <h2>${data.name}</h2>
           <button class="addto-watchlist">add to watchlist</button>
           <span class="item-id">${data.id}</span>
-          <span class="rate-movie">rate this show</span>
+          <span class="rate-us">rate this show</span>
           <figure>
           <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie Poster">
           </figure>
@@ -337,8 +341,12 @@ $(document).ready(function () {
 
     });
   }
-  $(".addto-watchlist").on('click',()=>{
-    alert();
+  $(".details ,.wrapper").on('click','.addto-watchlist',()=>{
+    let program_id=$(".addto-watchlist").next().html();
+    if(favourites.indexOf(program_id) < 0) {
+      favourites.push(program_id);
+    }
+    localStorage.setItem("favourites",favourites);
   });
 })
 
