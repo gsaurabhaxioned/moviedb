@@ -7,18 +7,6 @@ $(document).ready(function () {
     $(this).toggleClass("cross");
   });
 
-  // code for add to watchlist/favouries local storage
-  let favourites=[];
-  if(localStorage.getItem("favourites") === null) {
-    favourites = [];
-  }else {
-    favourites.push(localStorage.getItem("favourites"));
-    favourites.forEach(i=>{
-      console.log(i);
-    })
-  }
-
-
 
   let api_key = "8d6f976a3d568729504eb85502e74226";
   $(".slider").html("");
@@ -135,7 +123,7 @@ $(document).ready(function () {
     });
   }
 
-  // code for paginated list page 
+  //js code for paginated list page 
 
   if ($(".paginated-list").length > 0) {
     let prev = $(".prev"),
@@ -341,13 +329,60 @@ $(document).ready(function () {
 
     });
   }
+    // js code for add to watchlist 
+  
+    url = new URL(window.location.href),
+    urlstring = url.search.slice(1),
+    searchurlparam = new URLSearchParams(urlstring),
+    content_type = searchurlparam.get('type');
   $(".details ,.wrapper").on('click','.addto-watchlist',()=>{
-    let program_id=$(".addto-watchlist").next().html();
-    if(favourites.indexOf(program_id) < 0) {
-      favourites.push(program_id);
+    let program_id=$(".addto-watchlist").next().html(),
+    program_type = content_type;
+    let new_data = {
+      id:program_id,
+      type:program_type
     }
-    localStorage.setItem("favourites",favourites);
+    if(localStorage.getItem("favourites") === null) {
+      localStorage.setItem("favourites","[]");
+    }
+    let old_data = JSON.parse(localStorage.getItem("favourites"));
+    if(old_data.indexOf(new_data) < 0){
+    old_data.push(new_data);
+    }
+
+    localStorage.setItem("favourites",JSON.stringify(old_data));
   });
+
+
+      // code for add to watchlist/favouries local storage
+      if($(".watchlist").length > 0){
+    let allfavourites = JSON.parse(localStorage.getItem("favourites")),
+    favourites = [...allfavourites.reduce((map,obj) => map.set(obj.id,obj),new Map()).values()];
+    console.log(favourites);
+    favourites.forEach(i=>{
+      console.log(i);
+      $.ajax({
+        url:" https://api.themoviedb.org/3/"+i.type+"/"+i.id+"?api_key="+api_key,
+        type: "GET",
+        success: (data)=>{
+          console.log(data.title);
+          $(".watchlist .wrapper").append(`   
+          <div class="watchlist-item ">
+          <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-item-image">
+              <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie">
+          </a>
+           <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-title">${data.title}</a>
+              <button class="removefrom-watchlist">
+                  remove from Watchlist
+              </button>
+              <span class="watchlist-id">${i.id}</span>
+   
+        `);
+          
+        }
+      });
+    })
+  }
 })
 
 // function to display movies according to categories
