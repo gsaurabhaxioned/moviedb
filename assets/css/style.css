@@ -308,7 +308,6 @@ main .wrapper {
   border: 5px solid #ff0000;
 }
 
-
 form {
   width: 50%;
   margin-top: 50px;
@@ -356,6 +355,10 @@ input[type="submit"]:hover {
   margin-top: 50px;
 }
 
+.page-blur {
+  opacity: 0.5;
+}
+
 .movie-categoery,.tvshow-categoery {
   padding: 20px 0;
 }
@@ -386,7 +389,7 @@ input[type="submit"]:hover {
   font-family: "fontAwesome";
 }
 
-.addto-watchlist {
+.addto-watchlist,.view-details {
   padding: 10px;
   border-radius: 10px;
   margin-top: 15px;
@@ -401,6 +404,11 @@ input[type="submit"]:hover {
 }
 
 .addto-watchlist:hover {
+  background-image:linear-gradient(-45deg, #000, transparent);
+  color: #00ffff;
+}
+
+.view-details:hover {
   background-image:linear-gradient(-45deg, #000, transparent);
   color: #00ffff;
 }
