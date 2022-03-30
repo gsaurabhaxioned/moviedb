@@ -14,7 +14,6 @@ $(document).ready(function () {
     displayMovies("popular", "most-popular-movies");
     displayMovies("now_playing", "now-playing-movies");
     displayMovies("upcoming", "upcoming-movies");
-    displayNews("trending-news");
   }
 
   // function calls to display tv shows according to categories 
@@ -22,6 +21,9 @@ $(document).ready(function () {
     displayTvshows("on_the_air", "on-air");
     displayTvshows("airing_today", "airing-today");
   }
+
+  // function call to display trending shows 
+  displayNews("trending-news");
 
   // initialising variables for login form 
   let loginform = $('.loginform'),
@@ -132,9 +134,13 @@ $(document).ready(function () {
       content_type = searchurlparam.get('type'),
       category = searchurlparam.get('cat'),
       page_no = parseInt(searchurlparam.get('page'));
-    api_key = "8d6f976a3d568729504eb85502e74226";
+      api_key = "8d6f976a3d568729504eb85502e74226",
+      pagination_url = "https://api.themoviedb.org/3/" + content_type + "/" + category + "?api_key=" + api_key + "&language=en-US&page=1"; 
+      if(category === "trending"){
+        pagination_url = " https://api.themoviedb.org/3/trending/all/day?api_key=" + api_key + "&language=en-US&page=1";
+    }
     $.ajax({
-      url: "https://api.themoviedb.org/3/" + content_type + "/" + category + "?api_key=" + api_key + "&language=en-US&page=1",
+      url: pagination_url,
       type: "GET",
       success: (data) => {
         let result = data.results,
@@ -204,6 +210,44 @@ $(document).ready(function () {
     </div>
         `);
           })
+        }
+
+        if(category === "trending") {
+          // result.forEach(i => {
+          //   let content_type=i.media_type;
+          //   if(content_type === "movie"){
+          //   $("." + classname + " .slider").slick('slickAdd', `
+          //     <div class="movie-content ">
+          //     <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self">
+          //         <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
+          //     </a>
+          //     <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="title">${i.title}</a>
+          //     <div class="user-actions">
+          //         <span class="rate-movie">rate us</span>
+          //         <button class="addto-watchlist">
+          //             add to Watchlist
+          //         </button>
+          //     </div>
+          // </div>
+          //     `);
+          //   }
+          //   if(content_type === "tv"){
+          //     $("." + classname + " .slider").slick('slickAdd', `
+          //       <div class="movie-content ">
+          //       <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self">
+          //           <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
+          //       </a>
+          //       <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="title">${i.name}</a>
+          //       <div class="user-actions">
+          //           <span class="rate-movie">rate us</span>
+          //           <button class="addto-watchlist">
+          //               add to Watchlist
+          //           </button>
+          //       </div>
+          //   </div>
+          //       `);
+          //     }
+          // })
         }
       },
       error: (error) => {
@@ -349,15 +393,16 @@ const displayNews = (classname) => {
     url: " https://api.themoviedb.org/3/trending/all/day?api_key=" + api_key + "&language=en-US&page=1",
     type: "GET",
     success: (data) => {
-      console.log(data.results[0]);
       let result = data.results;
       result.forEach(i => {
+        let content_type=i.media_type;
+        if(content_type === "movie"){
         $("." + classname + " .slider").slick('slickAdd', `
           <div class="movie-content ">
-          <a href="details.html?id=${i.id}" title="Get Details" target="_self">
+          <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
-          <a href="details.html?id=${i.id}" title="Get Details" target="_self" class="title">${i.title}</a>
+          <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="title">${i.title}</a>
           <div class="user-actions">
               <span class="rate-movie">rate us</span>
               <button class="addto-watchlist">
@@ -366,7 +411,26 @@ const displayNews = (classname) => {
           </div>
       </div>
           `);
+        }
+        if(content_type === "tv"){
+          $("." + classname + " .slider").slick('slickAdd', `
+            <div class="movie-content ">
+            <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self">
+                <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
+            </a>
+            <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="title">${i.name}</a>
+            <div class="user-actions">
+                <span class="rate-movie">rate us</span>
+                <button class="addto-watchlist">
+                    add to Watchlist
+                </button>
+            </div>
+        </div>
+            `);
+          }
       })
+    
+  
 
       $(".slider").slick();
     },
