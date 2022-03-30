@@ -193,6 +193,7 @@ header .wrapper {
 .searchbar {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .search-field {
@@ -239,6 +240,23 @@ header .wrapper {
 
 .search-button:hover::before {
   color: #00ffff;
+}
+
+.search-result {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  display: none;
+  flex-direction: column;
+  row-gap: 10px;
+  position: absolute;
+  top: 100%;
+  background: rgb(0,0,0,0.6);
+}
+
+.search-result li {
+  color: #fff;
+  white-space: nowrap;
 }
 
 .logout {
@@ -363,7 +381,7 @@ input[type="submit"]:hover {
   padding: 20px 0;
 }
 
-.rate-movie,.rate-tvshow {
+.rate-us {
   margin-top: 15px;
   display: block;
   cursor: pointer;
@@ -374,15 +392,12 @@ input[type="submit"]:hover {
   -moz-transition: all ease-in-out 0.5s;
 }
 
-.rate-movie:hover {
+
+.rate-us:hover {
   color: #00ffff;
 }
 
-.rate-tvshow:hover {
-  color: #00ffff;
-}
-
-.rate-movie::before,.rate-tvshow::before {
+.rate-us::before {
   content: "\f005";
   margin-right: 2%;
   color: #ffff00;
@@ -403,6 +418,12 @@ input[type="submit"]:hover {
   -moz-transition: all ease-in-out 0.5s;
 }
 
+.view-details {
+  width: 50%;
+  margin: 20px auto;
+  display: block;
+}
+
 .addto-watchlist:hover {
   background-image:linear-gradient(-45deg, #000, transparent);
   color: #00ffff;
@@ -417,6 +438,7 @@ input[type="submit"]:hover {
   content: "\f067";
   margin-right: 2%;
   color: #ffff00;
+  display: block;
   font-family: "fontAwesome";
 }
 
@@ -499,6 +521,11 @@ input[type="submit"]:hover {
   justify-content: space-around;
 }
 
+.page-item .view-details{
+  width: auto;
+  margin: auto 0 auto auto;
+}
+
 .page-item-image,.pagination-title {
   margin-right: auto;
 }
@@ -533,13 +560,6 @@ input[type="submit"]:hover {
   width: 25%;
 }
 
-.user-actions-pagination {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-basis: 30%;
-}
-
 .rate-us {
   cursor: pointer;
   white-space: nowrap;
@@ -570,8 +590,8 @@ input[type="submit"]:hover {
 
 .details-overview {
   width: 50%;
-  color: #00ffff;
-  font-size: 30px;
+  color: #7fff00;
+  font-size: 27px;
   text-align: center;
 }
 
