@@ -1,9 +1,20 @@
 $(document).ready(function () {
+
+  // code for hamburger icon 
   $(".hamburger").click(() => {
     $(".menus").toggleClass("headermenus-show");
     $(".menus").toggleClass("headermenus");
     $(this).toggleClass("cross");
   });
+
+  // code for add to watchlist/favouries local storage
+  if(localStorage.getItem("favourites") === null) {
+    favourites = [];
+  }else {
+    favourites = JSON.parse(localStorage.getItem("favourites"));
+  }
+
+
 
   let api_key = "8d6f976a3d568729504eb85502e74226";
   $(".slider").html("");
@@ -125,8 +136,7 @@ $(document).ready(function () {
   if ($(".paginated-list").length > 0) {
     let prev = $(".prev"),
       current = $(".curent"),
-      next = $(".next"),
-      total_pages = 100,
+      next = $(".next");
 
       url = new URL(window.location.href),
       urlstring = url.search.slice(1),
@@ -147,6 +157,9 @@ $(document).ready(function () {
           total_pages = data.total_pages;
         console.log(total_pages);
         $(".prev").addClass("disabled");
+        if(current === total_pages-1) {
+          $(".next").addClass("disabled");
+        }
 
         // functions for accessing next and previous pages in pagination list 
 
@@ -155,6 +168,7 @@ $(document).ready(function () {
           page_no = parseInt(page_no + 1);
           console.log(page_no);
           console.log(total_pages);
+          console.log(pagination_url);
           if (page_no < total_pages) {
             gotoPage(page_no, content_type, category);
           } else {
@@ -213,41 +227,41 @@ $(document).ready(function () {
         }
 
         if(category === "trending") {
-          // result.forEach(i => {
-          //   let content_type=i.media_type;
-          //   if(content_type === "movie"){
-          //   $("." + classname + " .slider").slick('slickAdd', `
-          //     <div class="movie-content ">
-          //     <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self">
-          //         <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
-          //     </a>
-          //     <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="title">${i.title}</a>
-          //     <div class="user-actions">
-          //         <span class="rate-movie">rate us</span>
-          //         <button class="addto-watchlist">
-          //             add to Watchlist
-          //         </button>
-          //     </div>
-          // </div>
-          //     `);
-          //   }
-          //   if(content_type === "tv"){
-          //     $("." + classname + " .slider").slick('slickAdd', `
-          //       <div class="movie-content ">
-          //       <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self">
-          //           <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
-          //       </a>
-          //       <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="title">${i.name}</a>
-          //       <div class="user-actions">
-          //           <span class="rate-movie">rate us</span>
-          //           <button class="addto-watchlist">
-          //               add to Watchlist
-          //           </button>
-          //       </div>
-          //   </div>
-          //       `);
-          //     }
-          // })
+          result.forEach(i => {
+            let media_type=i.media_type;
+            if(media_type === "movie"){
+            $(".paginated-contents").append(`
+              <div class="page-item">
+              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="page-item-image">
+                  <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
+              </a>
+              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="pagination-title">${i.title}</a>
+              <div class="user-actions-pagination">
+                  <span class="rate-us">rate us</span>
+                  <button class="addto-watchlist">
+                      add to Watchlist
+                  </button>
+              </div>
+          </div>
+              `);
+            }
+            if(media_type === "tv"){
+              $(".paginated-contents").append(`
+              <div class="page-item">
+              <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="page-item-image">
+                  <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
+              </a>
+              <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="pagination-title">${i.name}</a>
+              <div class="user-actions-pagination">
+                  <span class="rate-us">rate us</span>
+                  <button class="addto-watchlist">
+                      add to Watchlist
+                  </button>
+              </div>
+          </div>
+                `);
+              }
+          })
         }
       },
       error: (error) => {
@@ -277,6 +291,9 @@ $(document).ready(function () {
           console.log(data.production_countries);
           $(".details .wrapper").append(`
             <h2>${data.title}</h2>
+            <button class="addto-watchlist">add to watchlist</button>
+            <span class="item-id">${data.id}</span>
+            <span class="rate-movie">rate this movie</span>
             <figure>
             <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie Poster">
             </figure>
@@ -287,11 +304,15 @@ $(document).ready(function () {
             <p class="production-company">Production company: <span class="text-red">${data.production_companies[0].name}</span></p>
             <p class="production-country">Production country: <span class="text-red">${data.production_countries[0].name}</span></p>
             </div>
+        
           `);
         }
         if (content_type === "tv") {
           $(".details .wrapper").append(`
           <h2>${data.name}</h2>
+          <button class="addto-watchlist">add to watchlist</button>
+          <span class="item-id">${data.id}</span>
+          <span class="rate-movie">rate this show</span>
           <figure>
           <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie Poster">
           </figure>
@@ -307,7 +328,6 @@ $(document).ready(function () {
             <p class="production-country">Production country: <span class="text-red">${data.production_countries[0].name}</span></p>
             `);
           }
-
         }
       },
       error: (error) => {
@@ -317,6 +337,9 @@ $(document).ready(function () {
 
     });
   }
+  $(".addto-watchlist").on('click',()=>{
+    alert();
+  });
 })
 
 // function to display movies according to categories
@@ -336,9 +359,9 @@ const displayMovies = (category, classname) => {
           <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="title">${i.title}</a>
           <div class="user-actions">
               <span class="rate-movie">rate us</span>
-              <button class="addto-watchlist">
+              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="addto-watchlist">
                   add to Watchlist
-              </button>
+              </a>
           </div>
       </div>
           `);
@@ -369,9 +392,9 @@ const displayTvshows = (category, classname) => {
           <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="title">${i.name}</a>
           <div class="user-actions">
               <span class="rate-movie">rate us</span>
-              <button class="addto-watchlist">
-                  add to Watchlist
-              </button>
+              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="addto-watchlist">
+              add to Watchlist
+          </a>
           </div>
       </div>
           `);
@@ -405,9 +428,9 @@ const displayNews = (classname) => {
           <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="title">${i.title}</a>
           <div class="user-actions">
               <span class="rate-movie">rate us</span>
-              <button class="addto-watchlist">
-                  add to Watchlist
-              </button>
+              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="addto-watchlist">
+              add to Watchlist
+          </a>
           </div>
       </div>
           `);
@@ -421,17 +444,14 @@ const displayNews = (classname) => {
             <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="title">${i.name}</a>
             <div class="user-actions">
                 <span class="rate-movie">rate us</span>
-                <button class="addto-watchlist">
-                    add to Watchlist
-                </button>
+                <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="addto-watchlist">
+                add to Watchlist
+            </a>
             </div>
         </div>
             `);
           }
       })
-    
-  
-
       $(".slider").slick();
     },
     error: (error) => {
@@ -446,8 +466,53 @@ const displayNews = (classname) => {
 const gotoPage = (page, content_type, category) => {
   $(".paginated-contents").html("");
   let api_key = "8d6f976a3d568729504eb85502e74226";
+  
+  if(category === "trending"){
+    $.ajax({
+      url: " https://api.themoviedb.org/3/trending/all/day?api_key=" + api_key + "&language=en-US&page="+page,
+      type: "GET",
+      success: (data) => {
+        let result = data.results;
+        result.forEach(i => {
+          let media_type=i.media_type;
+          if(media_type === "movie"){
+          $(".paginated-contents").append(`
+            <div class="page-item">
+            <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="page-item-image">
+                <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
+            </a>
+            <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="pagination-title">${i.title}</a>
+            <div class="user-actions-pagination">
+                <span class="rate-us">rate us</span>
+                <button class="addto-watchlist">
+                    add to Watchlist
+                </button>
+            </div>
+        </div>
+            `);
+          }
+          if(media_type === "tv"){
+            $(".paginated-contents").append(`
+            <div class="page-item">
+            <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="page-item-image">
+                <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
+            </a>
+            <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="pagination-title">${i.name}</a>
+            <div class="user-actions-pagination">
+                <span class="rate-us">rate us</span>
+                <button class="addto-watchlist">
+                    add to Watchlist
+                </button>
+            </div>
+        </div>
+              `);
+            }
+        })
+      }
+      })
+}else{
   $.ajax({
-    url: "https://api.themoviedb.org/3/" + content_type + "/" + category + "?api_key=" + api_key + "&language=en-US&page=" + page,
+    url: "https://api.themoviedb.org/3/" + content_type + "/" + category + "?api_key=" + api_key + "&language=en-US&page="+page,
     type: "GET",
     success: (data) => {
       let result = data.results;
@@ -495,4 +560,5 @@ const gotoPage = (page, content_type, category) => {
     }
 
   });
+}
 }
