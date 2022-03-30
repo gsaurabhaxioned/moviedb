@@ -181,9 +181,9 @@ header .wrapper {
   color: #ffff00;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
   -ms-transition: all ease-in-out 0.5s;
   -o-transition: all ease-in-out 0.5s;
-  -moz-transition: all ease-in-out 0.5s;
 }
 
 .menus ul li a:hover {
@@ -211,14 +211,18 @@ header .wrapper {
   padding: 4%;
   border: 3px solid rgb(0, 0, 0, 0.6);
   border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
   background-color: rgb(0, 0, 0, 0.6);
   color: #ffff00;
   text-indent: -9999px;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
   -ms-transition: all ease-in-out 0.5s;
   -o-transition: all ease-in-out 0.5s;
-  -moz-transition: all ease-in-out 0.5s;
 }
 
 .search-button::before {
@@ -228,9 +232,9 @@ header .wrapper {
   text-indent: 0;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
   -ms-transition: all ease-in-out 0.5s;
   -o-transition: all ease-in-out 0.5s;
-  -moz-transition: all ease-in-out 0.5s;
 }
 
 .search-button:hover {
@@ -266,13 +270,20 @@ header .wrapper {
 .logout {
   padding: 10px;
   border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
   background-image: linear-gradient(45deg,#ff0000,transparent);
+  background-image: -webkit-linear-gradient(45deg,#ff0000,transparent);
+  background-image: -moz-linear-gradient(45deg,#ff0000,transparent);
+  background-image: -o-linear-gradient(45deg,#ff0000,transparent);
   color: #ffff00;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
   -ms-transition: all ease-in-out 0.5s;
   -o-transition: all ease-in-out 0.5s;
-  -moz-transition: all ease-in-out 0.5s;
 }
 
 .logout:hover {
@@ -291,6 +302,7 @@ header .wrapper {
 
 main {
   width: 100%;
+  min-height: 100vh;
   background-image:url(https://motionarray.imgix.net/preview-637482E3duBV7cp_0014.jpg?w=660&q=60&fit=max&auto=format);
   background-size: cover;
   background-attachment: fixed;
@@ -302,6 +314,10 @@ main {
 main .wrapper {
   padding: 30px;
   border-radius: 56px;
+  -webkit-border-radius: 56px;
+  -moz-border-radius: 56px;
+  -ms-border-radius: 56px;
+  -o-border-radius: 56px;
   background-color: rgb(138,43,226,0.4);
 }
 
@@ -340,7 +356,15 @@ input {
   padding: 13px 33px;
   margin-top: 20px;
   border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
 }
 
 .submit {
@@ -353,13 +377,16 @@ input[type="submit"] {
   margin: 20px auto;
   border: 1px solid #0000ff;
   background-image: linear-gradient(45deg, #0000ff, transparent);
+  background-image: -webkit-linear-gradient(45deg, #0000ff, transparent);
+  background-image: -o-linear-gradient(45deg, #0000ff, transparent);
+  background-image: -moz-linear-gradient(45deg, #0000ff, transparent);
   color: #fff;
   font-size: 20px;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
   -ms-transition: all ease-in-out 0.5s;
   -o-transition: all ease-in-out 0.5s;
-  -moz-transition: all ease-in-out 0.5s;
 }
 
 input[type="submit"]:hover {
@@ -391,11 +418,10 @@ input[type="submit"]:hover {
   cursor: pointer;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
   -ms-transition: all ease-in-out 0.5s;
   -o-transition: all ease-in-out 0.5s;
-  -moz-transition: all ease-in-out 0.5s;
 }
-
 
 .rate-us:hover {
   color: #00ffff;
@@ -411,15 +437,22 @@ input[type="submit"]:hover {
 .addto-watchlist,.view-details,.removefrom-watchlist {
   padding: 10px;
   border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
   margin-top: 15px;
   display: inline-block;
   background-image: linear-gradient(45deg, #000, transparent);
+  background-image: -webkit-linear-gradient(45deg, #000, transparent);
+  background-image: -moz-linear-gradient(45deg, #000, transparent);
+  background-image: -o-linear-gradient(45deg, #000, transparent);
   color: #fff;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
   -ms-transition: all ease-in-out 0.5s;
   -o-transition: all ease-in-out 0.5s;
-  -moz-transition: all ease-in-out 0.5s;
 }
 
 .view-details {
@@ -430,11 +463,17 @@ input[type="submit"]:hover {
 
 .addto-watchlist:hover {
   background-image:linear-gradient(-45deg, #000, transparent);
+  background-image:-webkit-linear-gradient(-45deg, #000, transparent);
+  background-image:-moz-linear-gradient(-45deg, #000, transparent);
+  background-image:-o-linear-gradient(-45deg, #000, transparent);
   color: #00ffff;
 }
 
 .view-details:hover {
   background-image:linear-gradient(-45deg, #000, transparent);
+  background-image:-webkit-linear-gradient(-45deg, #000, transparent);
+  background-image:-moz-linear-gradient(-45deg, #000, transparent);
+  background-image:-o-linear-gradient(-45deg, #000, transparent);
   color: #00ffff;
 }
 
@@ -457,19 +496,29 @@ input[type="submit"]:hover {
 .view-more {
   margin-top: 15px;
   background-image: linear-gradient(45deg, #0000ff, transparent);
+  background-image: -webkit-linear-gradient(45deg, #0000ff, transparent);
+  background-image: -o-linear-gradient(45deg, #0000ff, transparent);
+  background-image: -moz-linear-gradient(45deg, #0000ff, transparent);
   color: #fff;
   padding: 10px 20px;
   border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
   font-size: 20px;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
   -ms-transition: all ease-in-out 0.5s;
   -o-transition: all ease-in-out 0.5s;
-  -moz-transition: all ease-in-out 0.5s;
 }
 
 .view-more:hover {
   background-image: linear-gradient(-45deg, #0000ff, transparent);
+  background-image: -webkit-linear-gradient(-45deg, #0000ff, transparent);
+  background-image: -moz-linear-gradient(-45deg, #0000ff, transparent);
+  background-image: -o-linear-gradient(-45deg, #0000ff, transparent);
   color: #00ffff;
 }
 
@@ -487,9 +536,9 @@ input[type="submit"]:hover {
   cursor: pointer;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
   -ms-transition: all ease-in-out 0.5s;
   -o-transition: all ease-in-out 0.5s;
-  -moz-transition: all ease-in-out 0.5s;
 }
 
 .pagination-controls span:hover {
@@ -505,6 +554,10 @@ input[type="submit"]:hover {
   padding: 1px 8px;
   border: 2px solid #ffff00;
   border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
 }
 
 .current:hover {
@@ -547,9 +600,9 @@ input[type="submit"]:hover {
 .title,.rate-us,.pagination-title {
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
   -ms-transition: all ease-in-out 0.5s;
   -o-transition: all ease-in-out 0.5s;
-  -moz-transition: all ease-in-out 0.5s;
 }
 
 .title:hover {
@@ -636,6 +689,13 @@ input[type="submit"]:hover {
 /* details page styling end  */
 /* watchlist page styling start  */
 
+.watchlist-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
 .watchlist-item {
   width: 60%;
   margin: auto;
@@ -656,9 +716,9 @@ input[type="submit"]:hover {
   font-size: 20px;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
   -ms-transition: all ease-in-out 0.5s;
   -o-transition: all ease-in-out 0.5s;
-  -moz-transition: all ease-in-out 0.5s;
 }
 
 .watchlist-title:hover {
@@ -709,9 +769,9 @@ footer .wrapper {
   text-indent: 0;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
   -ms-transition: all ease-in-out 0.5s;
   -o-transition: all ease-in-out 0.5s;
-  -moz-transition: all ease-in-out 0.5s;
 }
 
 .social-links li a:hover:before {
@@ -735,9 +795,9 @@ footer .wrapper {
   color: #ffff00;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
   -ms-transition: all ease-in-out 0.5s;
   -o-transition: all ease-in-out 0.5s;
-  -moz-transition: all ease-in-out 0.5s;
 }
 
 .footer-links li a:hover {
@@ -800,9 +860,9 @@ border-right: 1px solid #ffff00;
     transform: translateY(-500px);
     transition: all ease-in-out 0.5s;
     -webkit-transition: all ease-in-out 0.5s;
+    -moz-transition: all ease-in-out 0.5s;
     -ms-transition: all ease-in-out 0.5s;
     -o-transition: all ease-in-out 0.5s;
-    -moz-transition: all ease-in-out 0.5s;
   }
 
   .headermenus-show {
