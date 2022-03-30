@@ -89,8 +89,18 @@ $(document).ready(function () {
 
   // js code for search functionality 
   $(".search-button").click(()=>{
-      $("")
+    showresults();
   }); 
+
+  $(".search-field").keypress((e)=>{
+    if(e.key === "Enter") {
+      showresults();
+    }else if(e.key === "") {
+      if($(".search-field").val === ""){
+        $(".search-result").removeClass("show-flex");
+      }
+    }
+  })
 
   // slick slider code 
   if ($(".movie-category").length > 0 || $(".tvshow-category").length > 0) {
@@ -241,12 +251,9 @@ $(document).ready(function () {
                   <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
               </a>
               <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="pagination-title">${i.name}</a>
-              <div class="user-actions-pagination">
-                  <span class="rate-us">rate us</span>
                   <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="view-details">
                   view details
               </a>
-              </div>
           </div>
                 `);
             }
@@ -616,4 +623,34 @@ const gotoPage = (page, content_type, category) => {
 
     });
   }
+}
+
+const showresults = ()=>{
+  
+  $(".search-result").html("");
+  let search_text = $(".search-field").val(),
+   api_key = "8d6f976a3d568729504eb85502e74226";
+  $.ajax({
+    url: "https://api.themoviedb.org/3/search/multi?api_key="+api_key+"&language=en-US&page=1&include_adult=false&query="+search_text,
+    type: "GET",
+    success: (data) =>{
+      let result = data.results;
+      result.forEach(i=>{
+        if(i.media_type === "movie"){
+        $(".search-result").append(`
+          <li><a href="details.html?id=${i.id}&type=${i.media_type}" title="Get Details" class="results">${i.title}</li>
+        `);
+        }else{
+          $(".search-result").append(`
+          <li><a href="details.html?id=${i.id}&type=${i.media_type}" title="Get Details" class="results">${i.name}</li>
+        `);
+        }
+      })       
+    },
+    error: (error) => {
+      alert("something went wrong,try again");
+      console.log(error);
+    }
+  });
+    $(".search-result").addClass("show-flex");
 }
