@@ -126,20 +126,21 @@ $(document).ready(function () {
   //js code for paginated list page 
 
   if ($(".paginated-list").length > 0) {
+    $(".paginated-contents").html("");
     let prev = $(".prev"),
       current = $(".curent"),
       next = $(".next");
 
-      url = new URL(window.location.href),
+    url = new URL(window.location.href),
       urlstring = url.search.slice(1),
       searchurlparam = new URLSearchParams(urlstring),
       content_type = searchurlparam.get('type'),
       category = searchurlparam.get('cat'),
-      page_no = parseInt(searchurlparam.get('page'));
-      api_key = "8d6f976a3d568729504eb85502e74226",
-      pagination_url = "https://api.themoviedb.org/3/" + content_type + "/" + category + "?api_key=" + api_key + "&language=en-US&page=1"; 
-      if(category === "trending"){
-        pagination_url = " https://api.themoviedb.org/3/trending/all/day?api_key=" + api_key + "&language=en-US&page=1";
+      page_no = parseInt(searchurlparam.get('page')),
+      api_key = "8d6f976a3d568729504eb85502e74226";
+      pagination_url = "https://api.themoviedb.org/3/" + content_type + "/" + category + "?api_key=" + api_key + "&language=en-US&page=1";
+    if (category === "trending") {
+      pagination_url = " https://api.themoviedb.org/3/trending/all/day?api_key=" + api_key + "&language=en-US&page=1";
     }
     $.ajax({
       url: pagination_url,
@@ -149,7 +150,7 @@ $(document).ready(function () {
           total_pages = data.total_pages;
         console.log(total_pages);
         $(".prev").addClass("disabled");
-        if(current === total_pages-1) {
+        if (current === total_pages - 1) {
           $(".next").addClass("disabled");
         }
 
@@ -188,12 +189,9 @@ $(document).ready(function () {
             <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
         </a>
          <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="pagination-title">${i.title}</a>
-        <div class="user-actions-pagination">
-            <span class="rate-us">rate us</span>
-            <button class="addto-watchlist">
-                add to Watchlist
-            </button>
-        </div>
+            <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="view-details">
+                view details
+            </a>
     </div>
         `);
           })
@@ -207,37 +205,31 @@ $(document).ready(function () {
             <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
         </a>
          <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="pagination-title">${i.name}</a>
-        <div class="user-actions-pagination">
-            <span class="rate-us">rate us</span>
-            <button class="addto-watchlist">
-                add to Watchlist
-            </button>
-        </div>
+            <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="view-details">
+            view details
+        </a>
     </div>
         `);
           })
         }
 
-        if(category === "trending") {
+        if (category === "trending") {
           result.forEach(i => {
-            let media_type=i.media_type;
-            if(media_type === "movie"){
-            $(".paginated-contents").append(`
+            let media_type = i.media_type;
+            if (media_type === "movie") {
+              $(".paginated-contents").append(`
               <div class="page-item">
               <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="page-item-image">
                   <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
               </a>
               <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="pagination-title">${i.title}</a>
-              <div class="user-actions-pagination">
-                  <span class="rate-us">rate us</span>
-                  <button class="addto-watchlist">
-                      add to Watchlist
-                  </button>
-              </div>
+                  <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
+                      view details
+                  </a>
           </div>
               `);
             }
-            if(media_type === "tv"){
+            if (media_type === "tv") {
               $(".paginated-contents").append(`
               <div class="page-item">
               <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="page-item-image">
@@ -246,13 +238,13 @@ $(document).ready(function () {
               <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="pagination-title">${i.name}</a>
               <div class="user-actions-pagination">
                   <span class="rate-us">rate us</span>
-                  <button class="addto-watchlist">
-                      add to Watchlist
-                  </button>
+                  <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="view-details">
+                  view details
+              </a>
               </div>
           </div>
                 `);
-              }
+            }
           })
         }
       },
@@ -283,13 +275,13 @@ $(document).ready(function () {
           console.log(data.production_countries);
           $(".details .wrapper").append(`
             <h2>${data.title}</h2>
-            <button class="addto-watchlist">add to watchlist</button>
-            <span class="item-id">${data.id}</span>
-            <span class="rate-us">rate this movie</span>
             <figure>
             <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie Poster">
             </figure>
             <p class="details-overview">${data.overview}</p>
+            <button class="addto-watchlist">add to watchlist</button>
+            <span class="item-id">${data.id}</span>
+            <span class="rate-us">rate this movie</span>
             <div class="more-details">
             <p class="status">Status:<span class="text-red">${data.status}</span></p>
             <p class="release-date">Release date: <span class="text-red">${data.release_date}</span></p>
@@ -302,13 +294,13 @@ $(document).ready(function () {
         if (content_type === "tv") {
           $(".details .wrapper").append(`
           <h2>${data.name}</h2>
-          <button class="addto-watchlist">add to watchlist</button>
-          <span class="item-id">${data.id}</span>
-          <span class="rate-us">rate this show</span>
           <figure>
           <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie Poster">
           </figure>
           <p class="details-overview">${data.overview}</p>
+          <button class="addto-watchlist">add to watchlist</button>
+          <span class="item-id">${data.id}</span>
+          <span class="rate-us">rate this show</span>
           <div class="more-details">
           <p class="status">Status:<span class="text-red">${data.status}</span></p>
           <p class="first-air-date">First Air date: <span class="text-red">${data.first_air_date}</span></p>
@@ -329,44 +321,46 @@ $(document).ready(function () {
 
     });
   }
-    // js code for add to watchlist 
-  
-    url = new URL(window.location.href),
+  // js code for add to watchlist 
+
+  url = new URL(window.location.href),
     urlstring = url.search.slice(1),
     searchurlparam = new URLSearchParams(urlstring),
     content_type = searchurlparam.get('type');
-  $(".details ,.wrapper").on('click','.addto-watchlist',()=>{
-    let program_id=$(".addto-watchlist").next().html(),
-    program_type = content_type;
+  $(".details ,.wrapper").on('click', '.addto-watchlist', () => {
+    let program_id = $(".addto-watchlist").next().html(),
+      program_type = content_type;
     let new_data = {
-      id:program_id,
-      type:program_type
+      id: program_id,
+      type: program_type
     }
-    if(localStorage.getItem("favourites") === null) {
-      localStorage.setItem("favourites","[]");
+    if (localStorage.getItem("favourites") === null) {
+      localStorage.setItem("favourites", "[]");
     }
     let old_data = JSON.parse(localStorage.getItem("favourites"));
-    if(old_data.indexOf(new_data) < 0){
-    old_data.push(new_data);
+    if (old_data.indexOf(new_data) < 0) {
+      old_data.push(new_data);
     }
 
-    localStorage.setItem("favourites",JSON.stringify(old_data));
+    localStorage.setItem("favourites", JSON.stringify(old_data));
   });
 
 
-      // code for add to watchlist/favouries local storage
-      if($(".watchlist").length > 0){
+  // code for add to watchlist/favouries local storage
+  if ($(".watchlist").length > 0) {
+    $(".watchlist .wrapper").html("");
     let allfavourites = JSON.parse(localStorage.getItem("favourites")),
-    favourites = [...allfavourites.reduce((map,obj) => map.set(obj.id,obj),new Map()).values()];
+      favourites = [...allfavourites.reduce((map, obj) => map.set(obj.id, obj), new Map()).values()];
     console.log(favourites);
-    favourites.forEach(i=>{
+    favourites.forEach(i => {
       console.log(i);
-      $.ajax({
-        url:" https://api.themoviedb.org/3/"+i.type+"/"+i.id+"?api_key="+api_key,
-        type: "GET",
-        success: (data)=>{
-          console.log(data.title);
-          $(".watchlist .wrapper").append(`   
+      if (i.type === "movie") {
+        $.ajax({
+          url: " https://api.themoviedb.org/3/" + i.type + "/" + i.id + "?api_key=" + api_key,
+          type: "GET",
+          success: (data) => {
+            console.log(data.title);
+            $(".watchlist .wrapper").append(`   
           <div class="watchlist-item ">
           <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-item-image">
               <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie">
@@ -376,11 +370,48 @@ $(document).ready(function () {
                   remove from Watchlist
               </button>
               <span class="watchlist-id">${i.id}</span>
-   
+          </div>
         `);
-          
-        }
-      });
+
+          }
+        });
+      }
+
+      if (i.type === "tv") {
+        $.ajax({
+          url: " https://api.themoviedb.org/3/" + i.type + "/" + i.id + "?api_key=" + api_key,
+          type: "GET",
+          success: (data) => {
+            console.log(data.title);
+            $(".watchlist .wrapper").append(`   
+          <div class="watchlist-item ">
+          <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-item-image">
+              <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie">
+          </a>
+           <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-title">${data.name}</a>
+              <button class="removefrom-watchlist">
+                  remove from Watchlist
+              </button>
+              <span class="watchlist-id">${i.id}</span>
+          </div>
+        `);
+
+          }
+        });
+      }
+    })
+    $(".watchlist .wrapper").on("click",".removefrom-watchlist",()=>{
+      let old_data = JSON.parse(localStorage.getItem("favourites")),
+          deleted_item = $(".watchlist .wrapper .removefrom-watchlist").next().html();
+          old_data.forEach(i=>{
+            if(i.id === deleted_item) {
+             let new_data= old_data.splice(i,i);
+             if (old_data.indexOf(new_data) < 0) {
+              old_data.push(new_data);
+            }
+        
+            }
+          })
     })
   }
 })
@@ -400,12 +431,9 @@ const displayMovies = (category, classname) => {
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
           <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="title">${i.title}</a>
-          <div class="user-actions">
-              <span class="rate-movie">rate us</span>
-              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="addto-watchlist">
-                  add to Watchlist
+              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
+                  view details
               </a>
-          </div>
       </div>
           `);
       })
@@ -433,12 +461,9 @@ const displayTvshows = (category, classname) => {
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
           <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="title">${i.name}</a>
-          <div class="user-actions">
-              <span class="rate-movie">rate us</span>
-              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="addto-watchlist">
-              add to Watchlist
+              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
+              view details
           </a>
-          </div>
       </div>
           `);
       })
@@ -461,39 +486,33 @@ const displayNews = (classname) => {
     success: (data) => {
       let result = data.results;
       result.forEach(i => {
-        let content_type=i.media_type;
-        if(content_type === "movie"){
-        $("." + classname + " .slider").slick('slickAdd', `
+        let content_type = i.media_type;
+        if (content_type === "movie") {
+          $("." + classname + " .slider").slick('slickAdd', `
           <div class="movie-content ">
           <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
           <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="title">${i.title}</a>
-          <div class="user-actions">
-              <span class="rate-movie">rate us</span>
-              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="addto-watchlist">
-              add to Watchlist
+              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
+              view details
           </a>
-          </div>
       </div>
           `);
         }
-        if(content_type === "tv"){
+        if (content_type === "tv") {
           $("." + classname + " .slider").slick('slickAdd', `
             <div class="movie-content ">
             <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self">
                 <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
             </a>
             <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="title">${i.name}</a>
-            <div class="user-actions">
-                <span class="rate-movie">rate us</span>
-                <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="addto-watchlist">
-                add to Watchlist
+                <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
+                view details
             </a>
-            </div>
         </div>
             `);
-          }
+        }
       })
       $(".slider").slick();
     },
@@ -509,99 +528,87 @@ const displayNews = (classname) => {
 const gotoPage = (page, content_type, category) => {
   $(".paginated-contents").html("");
   let api_key = "8d6f976a3d568729504eb85502e74226";
-  
-  if(category === "trending"){
+
+  if (category === "trending") {
     $.ajax({
-      url: " https://api.themoviedb.org/3/trending/all/day?api_key=" + api_key + "&language=en-US&page="+page,
+      url: " https://api.themoviedb.org/3/trending/all/day?api_key=" + api_key + "&language=en-US&page=" + page,
       type: "GET",
       success: (data) => {
         let result = data.results;
         result.forEach(i => {
-          let media_type=i.media_type;
-          if(media_type === "movie"){
-          $(".paginated-contents").append(`
+          let media_type = i.media_type;
+          if (media_type === "movie") {
+            $(".paginated-contents").append(`
             <div class="page-item">
             <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="page-item-image">
                 <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
             </a>
             <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="pagination-title">${i.title}</a>
-            <div class="user-actions-pagination">
-                <span class="rate-us">rate us</span>
-                <button class="addto-watchlist">
-                    add to Watchlist
-                </button>
-            </div>
+                <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
+                    view details
+                </a>
         </div>
             `);
           }
-          if(media_type === "tv"){
+          if (media_type === "tv") {
             $(".paginated-contents").append(`
             <div class="page-item">
             <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="page-item-image">
                 <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
             </a>
             <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="pagination-title">${i.name}</a>
-            <div class="user-actions-pagination">
-                <span class="rate-us">rate us</span>
-                <button class="addto-watchlist">
-                    add to Watchlist
-                </button>
-            </div>
+                <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="view-details">
+                    view details
+                </a>
         </div>
               `);
-            }
+          }
         })
       }
-      })
-}else{
-  $.ajax({
-    url: "https://api.themoviedb.org/3/" + content_type + "/" + category + "?api_key=" + api_key + "&language=en-US&page="+page,
-    type: "GET",
-    success: (data) => {
-      let result = data.results;
-      if (content_type === "movie") {
-        result.forEach(i => {
-          $(".paginated-contents").append(`
+    })
+  } else {
+    $.ajax({
+      url: "https://api.themoviedb.org/3/" + content_type + "/" + category + "?api_key=" + api_key + "&language=en-US&page=" + page,
+      type: "GET",
+      success: (data) => {
+        let result = data.results;
+        if (content_type === "movie") {
+          result.forEach(i => {
+            $(".paginated-contents").append(`
           <div class="page-item ">
           <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="page-item-image">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
            <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="pagination-title">${i.title}</a>
-          <div class="user-actions-pagination">
-              <span class="rate-us">rate us</span>
-              <button class="addto-watchlist">
-                  add to Watchlist
-              </button>
-          </div>
+              <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="view-details">
+                  view-details
+              </a>
       </div>
           `);
-        })
-      }
+          })
+        }
 
-      if (content_type === "tv") {
-        result.forEach(i => {
-          $(".paginated-contents").append(`
+        if (content_type === "tv") {
+          result.forEach(i => {
+            $(".paginated-contents").append(`
           <div class="page-item ">
           <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="page-item-image">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
            <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="pagination-title">${i.name}</a>
-          <div class="user-actions-pagination">
-              <span class="rate-us">rate us</span>
-              <button class="addto-watchlist">
-                  add to Watchlist
-              </button>
-          </div>
+              <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="view-details>
+                  view more
+              </a>
       </div>
           `);
-        })
+          })
+        }
+      },
+      error: (error) => {
+        alert("something went wrong,try again");
+        console.log(error);
       }
-    },
-    error: (error) => {
-      alert("something went wrong,try again");
-      console.log(error);
-    }
 
-  });
-}
+    });
+  }
 }
