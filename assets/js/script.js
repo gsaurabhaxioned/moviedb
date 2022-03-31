@@ -417,6 +417,7 @@ $(document).ready(function () {
     }
 
     localStorage.setItem("favourites", JSON.stringify(old_data));
+    alert("added to watchlist");
   });
 
 
@@ -429,8 +430,6 @@ $(document).ready(function () {
         deleted_item = $(this).next().html(),
         new_data = old_data.filter(i => i.id !== deleted_item);
       old_data.forEach(i => console.log(i.id));
-
-      alert(deleted_item);
       localStorage.setItem("favourites", JSON.stringify(new_data));
       showWatchlist();
     })
@@ -455,6 +454,9 @@ const displayMovies = (category, classname) => {
               <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
                   view details
               </a>
+              <div class="image-hover">
+              <span class="hover-content">click to explore</span>
+              </div>
       </div>
           `);
       })
@@ -485,6 +487,9 @@ const displayTvshows = (category, classname) => {
               <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="view-details">
               view details
           </a>
+          <div class="image-hover">
+          <span class="hover-content">click to explore</span>
+          </div>
       </div>
           `);
       })
@@ -518,6 +523,9 @@ const displayNews = (classname) => {
               <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
               view details
           </a>
+          <div class="image-hover">
+          <span class="hover-content">click to explore</span>
+          </div>
       </div>
           `);
         }
@@ -531,6 +539,9 @@ const displayNews = (classname) => {
                 <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
                 view details
             </a>
+            <div class="image-hover">
+            <span class="hover-content">click to explore</span>
+            </div>
         </div>
             `);
         }
@@ -621,8 +632,8 @@ const gotoPage = (page, content_type, category) => {
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
            <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="pagination-title">${i.name}</a>
-              <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="view-details>
-                  view more
+              <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="view-details">
+                  view details
               </a>
       </div>
           `);
