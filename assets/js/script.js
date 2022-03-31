@@ -358,6 +358,31 @@ $(document).ready(function () {
 
     });
   }
+
+  // js code for rating functionality 
+
+  $(".details .wrapper").on("click",".rate-us",()=>{
+    $(".rating-background").show();
+  })
+
+
+  $(".feedback-submit").click((e)=>{
+    e.preventDefault();
+    let starcount= $("input[type='radio']:checked").length;
+    if(starcount === 0){
+      $(".submit-response").html("No stars selected !");
+      $(".submit-response").show();
+    }else {
+      $(".submit-response").html("Thank you for rating !");
+    $(".submit-response").show();
+    }
+  });
+
+  $(".close-rating-box").click(()=>{
+    $(".rating-background").hide();
+  })
+
+
   // js code for add to watchlist 
 
   url = new URL(window.location.href),
