@@ -227,9 +227,9 @@ $(document).ready(function () {
         if (content_type === "movie") {
           result.forEach(i => {
             $(".paginated-contents").append(`
-        <ul class="page-item ">
-        <li>
-        <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="page-item-image">
+        <ul class="page-item">
+        <li class="page-item-image">
+        <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self">
             <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
         </a>
         </li>
@@ -249,9 +249,9 @@ $(document).ready(function () {
         if (content_type === "tv") {
           result.forEach(i => {
             $(".paginated-contents").append(`
-        <ul class="page-item ">
-        <li>
-        <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="page-item-image">
+        <ul class="page-item">
+        <li class="page-item-image">
+        <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self">
             <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
         </a>
         </li>
@@ -274,8 +274,8 @@ $(document).ready(function () {
             if (media_type === "movie") {
               $(".paginated-contents").append(`
               <ul class="page-item">
-              <li>
-              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="page-item-image">
+              <li class="page-item-image">
+              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self">
                   <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
               </a>
               </li>
@@ -293,8 +293,8 @@ $(document).ready(function () {
             if (media_type === "tv") {
               $(".paginated-contents").append(`
               <ul class="page-item">
-              <li>
-              <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="page-item-image">
+              <li class="page-item-image">
+              <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self">
                   <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
               </a>
               </li>
@@ -588,8 +588,8 @@ const gotoPage = (page, content_type, category) => {
           if (media_type === "movie") {
             $(".paginated-contents").append(`
             <ul class="page-item">
-            <li>
-            <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="page-item-image">
+            <li class="page-item-image">
+            <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self">
                 <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
             </a>
             </li>
@@ -607,8 +607,8 @@ const gotoPage = (page, content_type, category) => {
           if (media_type === "tv") {
             $(".paginated-contents").append(`
             <ul class="page-item">
-            <li>
-            <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="page-item-image">
+            <li class="page-item-image">
+            <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self">
                 <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
             </a>
             </li>
@@ -640,8 +640,8 @@ const gotoPage = (page, content_type, category) => {
           result.forEach(i => {
             $(".paginated-contents").append(`
           <ul class="page-item ">
-          <li>
-          <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="page-item-image">
+          <li class="page-item-image">
+          <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
           </li>
@@ -662,8 +662,8 @@ const gotoPage = (page, content_type, category) => {
           result.forEach(i => {
             $(".paginated-contents").append(`
           <ul class="page-item ">
-          <li>
-          <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="page-item-image">
+          <li class="page-item-image">
+          <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
           </li>
