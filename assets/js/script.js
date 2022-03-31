@@ -206,6 +206,7 @@ $(document).ready(function () {
             gotoPage(page_no, content_type, category);
           } else {
             $(".next").addClass("disabled");
+            $(".current").html(total_pages);
           }
           $(".current").html(page_no);
         })
@@ -363,6 +364,7 @@ $(document).ready(function () {
 
   $(".details .wrapper").on("click",".rate-us",()=>{
     $(".rating-background").show();
+    $(".rating-box").show();
   })
 
 
@@ -374,7 +376,8 @@ $(document).ready(function () {
     }else {
       $(".submit-empty-response").hide();
       $(".submit-response").show();
-      $(".rating-background").hide("explode",{pieces: 64},2000);
+      $(".rating-box").hide("bounce",2000);
+      $(".rating-background").hide(4000);
     }
   });
 
@@ -389,7 +392,7 @@ $(document).ready(function () {
     urlstring = url.search.slice(1),
     searchurlparam = new URLSearchParams(urlstring),
     content_type = searchurlparam.get('type');
-  $(".details ,.wrapper").on('click', '.addto-watchlist', () => {
+  $(".details .wrapper").on('click', '.addto-watchlist', () => {
     let program_id = $(".addto-watchlist").next().html(),
       program_type = content_type;
     let new_data = {
@@ -400,88 +403,34 @@ $(document).ready(function () {
       localStorage.setItem("favourites", "[]");
     }
     let old_data = JSON.parse(localStorage.getItem("favourites"));
-    if (old_data.indexOf(new_data) < 0) {
+    let repeated_id = false;
+    old_data.forEach(i=>{
+      if(i.id === new_data.id) {
+        repeated_id = true;
+      }
+    })
+    if (repeated_id === false) {
       old_data.push(new_data);
+
     }
 
     localStorage.setItem("favourites", JSON.stringify(old_data));
   });
 
 
-  // code for add to watchlist/favouries local storage
+  // code to display or remove from watchlist/favouries local storage
   if ($(".watchlist").length > 0) {
-    $(".watchlist .wrapper").html("");
-    let allfavourites = JSON.parse(localStorage.getItem("favourites")),
-      favourites = [...allfavourites.reduce((map, obj) => map.set(obj.id, obj), new Map()).values()];
-    console.log(favourites);
-    favourites.forEach(i => {
-      console.log(i);
-      if (i.type === "movie") {
-        $.ajax({
-          url: " https://api.themoviedb.org/3/" + i.type + "/" + i.id + "?api_key=" + api_key,
-          type: "GET",
-          success: (data) => {
-            console.log(data.title);
-            $(".watchlist .wrapper").append(`   
-          <div class="watchlist-item ">
-          <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-item-image">
-              <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie">
-          </a>
-           <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-title">${data.title}</a>
-              <button class="removefrom-watchlist">
-                  remove from Watchlist
-              </button>
-              <span class="watchlist-id">${i.id}</span>
-          </div>
-        `);
-
-          },
-          error: (error)=>{
-            alert("something went wrong,try again");
-            console.log(error);
-          }
-        });
-      }
-
-      if (i.type === "tv") {
-        $.ajax({
-          url: " https://api.themoviedb.org/3/" + i.type + "/" + i.id + "?api_key=" + api_key,
-          type: "GET",
-          success: (data) => {
-            console.log(data.title);
-            $(".watchlist .wrapper").append(`   
-          <div class="watchlist-item ">
-          <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-item-image">
-              <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie">
-          </a>
-           <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-title">${data.name}</a>
-              <button class="removefrom-watchlist">
-                  remove from Watchlist
-              </button>
-              <span class="watchlist-id">${i.id}</span>
-          </div>
-        `);
-
-          },
-          error: (error)=>{
-            alert("something went wrong,try again");
-            console.log(error);
-          }
-        });
-      }
-    })
-    $(".watchlist .wrapper").on("click",".removefrom-watchlist",()=>{
+    showWatchlist();
+ 
+    $(".watchlist .wrapper").on("click",".removefrom-watchlist",function(){
       let old_data = JSON.parse(localStorage.getItem("favourites")),
-          deleted_item = $(".watchlist .wrapper .removefrom-watchlist").next().html();
-          old_data.forEach(i=>{
-            if(i.id === deleted_item) {
-             let new_data= old_data.splice(i,i);
-             if (old_data.indexOf(new_data) < 0) {
-              old_data.push(new_data);
-            }
-        
-            }
-          })
+          deleted_item = $(this).next().html(),
+         new_data = old_data.filter(i=>i.id !== deleted_item);
+         old_data.forEach(i=>console.log(i.id));
+          
+          alert(deleted_item);
+    localStorage.setItem("favourites", JSON.stringify(new_data));
+    showWatchlist();
     })
   }
 })
@@ -714,4 +663,69 @@ const showresults = ()=>{
     }
   });
  
+}
+
+// function to display watchlist 
+
+const showWatchlist = ()=>{
+  $(".watchlist .wrapper").html("");
+  let favourites = JSON.parse(localStorage.getItem("favourites")),
+     api_key = "8d6f976a3d568729504eb85502e74226";
+    //  favourites = [...allfavourites.reduce((map, obj) => map.set(obj.id, obj), new Map()).values()];
+  console.log(favourites);
+  favourites.forEach(i => {
+    console.log(i);
+    if (i.type === "movie") {
+      $.ajax({
+        url: " https://api.themoviedb.org/3/" + i.type + "/" + i.id + "?api_key=" + api_key,
+        type: "GET",
+        success: (data) => {
+          console.log(data.title);
+          $(".watchlist .wrapper").append(`   
+        <div class="watchlist-item ">
+        <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-item-image">
+            <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie">
+        </a>
+         <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-title">${data.title}</a>
+            <button class="removefrom-watchlist">
+                remove from Watchlist
+            </button>
+            <span class="watchlist-id">${i.id}</span>
+        </div>
+      `);
+
+        },
+        error: (error)=>{
+          alert("something went wrong,try again");
+          console.log(error);
+        }
+      });
+    }
+
+    if (i.type === "tv") {
+      $.ajax({
+        url: " https://api.themoviedb.org/3/" + i.type + "/" + i.id + "?api_key=" + api_key,
+        type: "GET",
+        success: (data) => {
+          $(".watchlist .wrapper").append(`   
+        <div class="watchlist-item ">
+        <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-item-image">
+            <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie">
+        </a>
+         <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-title">${data.name}</a>
+            <button class="removefrom-watchlist">
+                remove from Watchlist
+            </button>
+            <span class="watchlist-id">${i.id}</span>
+        </div>
+      `);
+
+        },
+        error: (error)=>{
+          alert("something went wrong,try again");
+          console.log(error);
+        }
+      });
+    }
+  })
 }
