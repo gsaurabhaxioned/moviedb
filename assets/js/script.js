@@ -227,15 +227,21 @@ $(document).ready(function () {
         if (content_type === "movie") {
           result.forEach(i => {
             $(".paginated-contents").append(`
-        <div class="page-item ">
+        <ul class="page-item ">
+        <li>
         <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="page-item-image">
             <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
         </a>
-         <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="pagination-title">${i.title}</a>
-            <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="view-details">
+        </li>
+        <li>
+         <a href="details.html?id=${i.id}&type=${content_type}" title="${i.title}" target="_self" class="pagination-title">${i.title}</a>
+         </li>  
+         <li>
+         <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="view-details">
                 view details
-            </a>
-    </div>
+         </a>
+         </li>
+    </ul>
         `);
           })
         }
@@ -243,15 +249,21 @@ $(document).ready(function () {
         if (content_type === "tv") {
           result.forEach(i => {
             $(".paginated-contents").append(`
-        <div class="page-item ">
+        <ul class="page-item ">
+        <li>
         <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="page-item-image">
             <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
         </a>
-         <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="pagination-title">${i.name}</a>
-            <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="view-details">
+        </li>
+        <li> 
+        <a href="details.html?id=${i.id}&type=${content_type}" title="${i.name}" target="_self" class="pagination-title">${i.name}</a>
+        </li>
+        <li>    
+        <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="view-details">
             view details
         </a>
-    </div>
+        </li>
+    </ul>
         `);
           })
         }
@@ -261,28 +273,40 @@ $(document).ready(function () {
             let media_type = i.media_type;
             if (media_type === "movie") {
               $(".paginated-contents").append(`
-              <div class="page-item">
+              <ul class="page-item">
+              <li>
               <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="page-item-image">
                   <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
               </a>
-              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="pagination-title">${i.title}</a>
-                  <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
+              </li>
+              <li>
+              <a href="details.html?id=${i.id}&type=movie" title="${i.title}" target="_self" class="pagination-title">${i.title}</a>
+              </li> 
+              <li> 
+              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
                       view details
-                  </a>
-          </div>
+              </a>
+              </li>
+          </ul>
               `);
             }
             if (media_type === "tv") {
               $(".paginated-contents").append(`
-              <div class="page-item">
+              <ul class="page-item">
+              <li>
               <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="page-item-image">
                   <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
               </a>
-              <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="pagination-title">${i.name}</a>
-                  <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="view-details">
+              </li>
+              <li>
+              <a href="details.html?id=${i.id}&type=tv" title="${i.name}" target="_self" class="pagination-title">${i.name}</a>
+              </li>  
+              <li>  
+              <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="view-details">
                   view details
               </a>
-          </div>
+              </li>
+          </ul>
                 `);
             }
           })
@@ -511,7 +535,7 @@ const displayNews = (classname) => {
         let content_type = i.media_type;
         if (content_type === "movie") {
           $("." + classname + " .slider").slick('slickAdd', `
-          <div class="movie-content ">
+          <ul class="movie-content ">
           <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
@@ -520,12 +544,12 @@ const displayNews = (classname) => {
               view details
           </a>
           <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="hover-content">click to explore</a>
-      </div>
+      </ul>
           `);
         }
         if (content_type === "tv") {
           $("." + classname + " .slider").slick('slickAdd', `
-            <div class="tv-content ">
+            <ul class="tv-content ">
             <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self">
                 <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
             </a>
@@ -534,7 +558,7 @@ const displayNews = (classname) => {
                 view details
             </a>
             <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="hover-content">click to explore</a>
-        </div>
+        </ul>
             `);
         }
       })
@@ -563,28 +587,40 @@ const gotoPage = (page, content_type, category) => {
           let media_type = i.media_type;
           if (media_type === "movie") {
             $(".paginated-contents").append(`
-            <div class="page-item">
+            <ul class="page-item">
+            <li>
             <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="page-item-image">
                 <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
             </a>
-            <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="pagination-title">${i.title}</a>
-                <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
+            </li>
+            <li>
+            <a href="details.html?id=${i.id}&type=movie" title="${i.title}" target="_self" class="pagination-title">${i.title}</a>
+            </li>  
+            <li>  
+            <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
                     view details
-                </a>
-        </div>
+            </a>
+            </li>
+        </ul>
             `);
           }
           if (media_type === "tv") {
             $(".paginated-contents").append(`
-            <div class="page-item">
+            <ul class="page-item">
+            <li>
             <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="page-item-image">
                 <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
             </a>
-            <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="pagination-title">${i.name}</a>
-                <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="view-details">
+            </li>
+            <li>
+            <a href="details.html?id=${i.id}&type=tv" title="${i.name}" target="_self" class="pagination-title">${i.name}</a>
+            </li>
+            <li>
+            <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="view-details">
                     view details
-                </a>
-        </div>
+            </a>
+            </li>
+        </ul>
               `);
           }
         })
@@ -603,15 +639,21 @@ const gotoPage = (page, content_type, category) => {
         if (content_type === "movie") {
           result.forEach(i => {
             $(".paginated-contents").append(`
-          <div class="page-item ">
+          <ul class="page-item ">
+          <li>
           <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="page-item-image">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
-           <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="pagination-title">${i.title}</a>
-              <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="view-details">
+          </li>
+          <li>
+           <a href="details.html?id=${i.id}&type=${content_type}" title="${i.title}" target="_self" class="pagination-title">${i.title}</a>
+           </li>
+           <li> 
+           <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="view-details">
                   view-details
-              </a>
-      </div>
+           </a>
+           </li>
+      </ul>
           `);
           })
         }
@@ -619,15 +661,21 @@ const gotoPage = (page, content_type, category) => {
         if (content_type === "tv") {
           result.forEach(i => {
             $(".paginated-contents").append(`
-          <div class="page-item ">
+          <ul class="page-item ">
+          <li>
           <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="page-item-image">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
-           <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="pagination-title">${i.name}</a>
-              <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="view-details">
+          </li>
+          <li>
+           <a href="details.html?id=${i.id}&type=${content_type}" title="${i.name}" target="_self" class="pagination-title">${i.name}</a>
+           </li>
+           <li>
+           <a href="details.html?id=${i.id}&type=${content_type}" title="Get Details" target="_self" class="view-details">
                   view details
-              </a>
-      </div>
+           </a>
+           </li>
+      </ul>
           `);
           })
         }
@@ -653,11 +701,11 @@ const showresults = () => {
       result.forEach(i => {
         if (i.media_type === "movie") {
           $(".search-result").append(`
-          <li><a href="details.html?id=${i.id}&type=${i.media_type}" title="Get Details" class="results">${i.title}</li>
+          <li><a href="details.html?id=${i.id}&type=${i.media_type}" title="${i.title}" class="results">${i.title}</li>
         `);
         } else {
           $(".search-result").append(`
-          <li><a href="details.html?id=${i.id}&type=${i.media_type}" title="Get Details" class="results">${i.name}</li>
+          <li><a href="details.html?id=${i.id}&type=${i.media_type}" title="${i.name}" class="results">${i.name}</li>
         `);
         }
       })
@@ -691,7 +739,7 @@ const showWatchlist = () => {
         <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-item-image">
             <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie">
         </a>
-         <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-title">${data.title}</a>
+         <a href="details.html?id=${i.id}&type=${i.type}" title="${data.title}" target="_self" class="watchlist-title">${data.title}</a>
             <button class="removefrom-watchlist">
                 remove from Watchlist
             </button>
@@ -717,7 +765,7 @@ const showWatchlist = () => {
         <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-item-image">
             <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie">
         </a>
-         <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-title">${data.name}</a>
+         <a href="details.html?id=${i.id}&type=${i.type}" title="${data.name}" target="_self" class="watchlist-title">${data.name}</a>
             <button class="removefrom-watchlist">
                 remove from Watchlist
             </button>
