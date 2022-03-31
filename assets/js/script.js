@@ -3,8 +3,7 @@ $(document).ready(function () {
   // code for hamburger icon 
   $(".hamburger").click(() => {
     $(".menus").toggleClass("headermenus-show");
-    $(".menus").toggleClass("headermenus");
-    $(this).toggleClass("cross");
+    $(".hamburger").toggleClass("cross");
   });
 
 
@@ -91,12 +90,15 @@ $(document).ready(function () {
   $(".search-button").click(()=>{
     if($(".search-field").val().length > 0) {
       $(".search-button").toggleClass("closeresult");
+      $(".search-result").toggleClass("show-flex");
       showresults();
     }
   }); 
 
   $(".search-field").keypress((e)=>{
     if(e.key === "Enter") {
+      $(".search-button").addClass("closeresult");
+      $(".search-result").addClass("show-flex");
       showresults();
     }
   })
@@ -651,5 +653,5 @@ const showresults = ()=>{
       console.log(error);
     }
   });
-    $(".search-result").addClass("show-flex");
+ 
 }
