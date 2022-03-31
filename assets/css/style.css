@@ -830,9 +830,10 @@ input[type="submit"]:hover {
 }
 
 .rating-box {
-  padding: 10px;
+  padding: 20px 10px;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -840,11 +841,16 @@ input[type="submit"]:hover {
   background: #8b0000;
 }
 
-.rating-box  input{
+.rating-stars {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.rating-stars  input{
   display: none;
 }
 
-.rating-box label {
+.rating-stars label {
   padding: 0 10px;
   display: inline-block;
   text-indent: -9999px;
@@ -855,7 +861,7 @@ input[type="submit"]:hover {
   -o-transition: all ease-in-out 0.5s;
 }
 
-.rating-box label::before {
+.rating-stars label::before {
   content: "\f005";
   float: right;
   font-family: "fontAwesome";
@@ -863,14 +869,50 @@ input[type="submit"]:hover {
   text-indent: 0;
 }
 
-.rating-box input:not(:checked) ~ label:hover,
-.rating-box input:not(:checked) ~ label:hover ~ label {
+.rating-stars input:not(:checked) ~ label:hover,
+.rating-stars input:not(:checked) ~ label:hover ~ label {
  color: #ffff00;
 }
 
-.rating-box input:checked ~ label {
+.rating-stars input:checked ~ label {
   color: #ffff00;
 }
+
+textarea {
+  width: 100%;
+}
+
+.submit-response {
+  display: none;
+}
+
+.submit-response span {
+  font-size: 20px;
+}
+
+.submit-response span:after {
+  content: "\f118";
+  margin-left: 5px;
+  font-family: "fontAwesome";
+}
+
+.close-rating-box {
+  padding: 2px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #ffff00;
+  text-indent: -9999px;
+}
+
+.close-rating-box::before {
+  content: "\f00d";
+  float: right;
+  color: #0000ff;
+  font-family: "fontAwesome";
+  text-indent: 0;
+}
+
 /* details page styling end  */
 /* watchlist page styling start  */
 
