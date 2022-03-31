@@ -886,7 +886,7 @@ textarea {
   width: 100%;
 }
 
-.submit-response {
+.submit-response,.submit-empty-response {
   display: none;
 }
 
@@ -894,10 +894,14 @@ textarea {
   font-size: 20px;
 }
 
-.submit-response span:after {
+.submit-response span:after,.submit-empty-response::after {
   content: "\f118";
   margin-left: 5px;
   font-family: "fontAwesome";
+}
+
+.submit-empty-response::after {
+  content: "\f119";
 }
 
 .close-rating-box {
