@@ -528,7 +528,8 @@ input[type="submit"]:hover {
 
 /* login page styling end  */
 /* movie and tv show category pages styling start  */
-.movie-content {
+.movie-content,.tv-content,.news-content {
+  position: relative;
   text-align: center;
 }
 
@@ -541,30 +542,7 @@ input[type="submit"]:hover {
   padding: 20px 0;
 }
 
-.rate-us {
-  margin-top: 15px;
-  display: block;
-  cursor: pointer;
-  transition: all ease-in-out 0.5s;
-  -webkit-transition: all ease-in-out 0.5s;
-  -moz-transition: all ease-in-out 0.5s;
-  -ms-transition: all ease-in-out 0.5s;
-  -o-transition: all ease-in-out 0.5s;
-}
-
-.rate-us:hover {
-  color: #00ffff;
-}
-
-.rate-us::before {
-  content: "\f005";
-  margin-right: 2%;
-  color: #ffff00;
-  font-family: "fontAwesome";
-}
-
-.addto-watchlist,
-.view-details,
+.view-details,.addto-watchlist,
 .removefrom-watchlist {
   padding: 10px;
   border-radius: 10px;
@@ -592,13 +570,6 @@ input[type="submit"]:hover {
   display: block;
 }
 
-.addto-watchlist:hover {
-  background-image: linear-gradient(-45deg, #000, transparent);
-  background-image: -webkit-linear-gradient(-45deg, #000, transparent);
-  background-image: -moz-linear-gradient(-45deg, #000, transparent);
-  background-image: -o-linear-gradient(-45deg, #000, transparent);
-  color: #00ffff;
-}
 
 .view-details:hover {
   background-image: linear-gradient(-45deg, #000, transparent);
@@ -608,12 +579,19 @@ input[type="submit"]:hover {
   color: #00ffff;
 }
 
-.addto-watchlist::after {
-  content: "\f067";
-  margin-right: 2%;
-  color: #ffff00;
+.hover-content {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: rgb(0, 0, 0, 0.6);
+  font-size: 25px;
+  transform: translate(-50%,-50%);
+  white-space: nowrap;
+}
+
+.movie-content:hover > .hover-content , .tv-content:hover > .hover-content , .news-content:hover > .hover-content {
   display: block;
-  font-family: "fontAwesome";
 }
 
 .top-rated {
@@ -812,6 +790,28 @@ input[type="submit"]:hover {
 }
 
 .rate-us {
+  margin-top: 15px;
+  display: block;
+  cursor: pointer;
+  transition: all ease-in-out 0.5s;
+  -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
+  -ms-transition: all ease-in-out 0.5s;
+  -o-transition: all ease-in-out 0.5s;
+}
+
+.rate-us:hover {
+  color: #00ffff;
+}
+
+.rate-us::before {
+  content: "\f005";
+  margin-right: 2%;
+  color: #ffff00;
+  font-family: "fontAwesome";
+}
+
+.rate-us {
   white-space: nowrap;
 }
 
@@ -916,6 +916,25 @@ textarea {
   font-family: "fontAwesome";
   text-indent: 0;
 }
+
+.addto-watchlist:hover {
+  background-image: linear-gradient(-45deg, #000, transparent);
+  background-image: -webkit-linear-gradient(-45deg, #000, transparent);
+  background-image: -moz-linear-gradient(-45deg, #000, transparent);
+  background-image: -o-linear-gradient(-45deg, #000, transparent);
+  color: #00ffff;
+}
+
+
+.addto-watchlist::after {
+  content: "\f067";
+  margin-right: 2%;
+  color: #ffff00;
+  display: block;
+  font-family: "fontAwesome";
+}
+
+
 
 /* details page styling end  */
 /* watchlist page styling start  */
