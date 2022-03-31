@@ -827,9 +827,50 @@ input[type="submit"]:hover {
   top: 0;
   left: 0;
   background: rgb(0, 0, 0, 0.8);
-  text-indent: -9999px;
 }
 
+.rating-box {
+  padding: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #8b0000;
+}
+
+.rating-box  input{
+  display: none;
+}
+
+.rating-box label {
+  padding: 0 10px;
+  display: inline-block;
+  text-indent: -9999px;
+  transition: all ease-in-out 0.5s;
+  -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
+  -ms-transition: all ease-in-out 0.5s;
+  -o-transition: all ease-in-out 0.5s;
+}
+
+.rating-box label::before {
+  content: "\f005";
+  float: right;
+  font-family: "fontAwesome";
+  font-size: 30px;
+  text-indent: 0;
+}
+
+.rating-box input:not(:checked) ~ label:hover,
+.rating-box input:not(:checked) ~ label:hover ~ label {
+ color: #ffff00;
+}
+
+.rating-box input:checked ~ label {
+  color: #ffff00;
+}
 /* details page styling end  */
 /* watchlist page styling start  */
 
