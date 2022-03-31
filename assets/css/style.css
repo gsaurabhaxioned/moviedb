@@ -662,7 +662,7 @@ input[type="submit"]:hover {
   align-items: center;
 }
 
-.pagination-controls span {
+.prev,.next {
   padding: 0 10px;
   cursor: pointer;
   transition: all ease-in-out 0.5s;
@@ -672,7 +672,7 @@ input[type="submit"]:hover {
   -o-transition: all ease-in-out 0.5s;
 }
 
-.pagination-controls span:hover {
+.prev:hover,.nex:hover {
   color: #00ffff;
 }
 
@@ -689,10 +689,6 @@ input[type="submit"]:hover {
   -moz-border-radius: 100%;
   -ms-border-radius: 100%;
   -o-border-radius: 100%;
-}
-
-.current:hover {
-  border-color: #00ffff;
 }
 
 .paginated-contents {
