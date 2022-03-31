@@ -304,6 +304,10 @@ header .wrapper {
   display: block;
 }
 
+.page-hide {
+  display: none;
+}
+
 .searchbar {
   display: flex;
   align-items: center;
@@ -822,7 +826,7 @@ input[type="submit"]:hover {
 .rating-background {
   width: 100%;
   height: 100%;
-  /* display: none; */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
