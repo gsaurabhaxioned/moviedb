@@ -1016,6 +1016,7 @@ footer .wrapper {
 .copyright {
   color: #ffff00;
   font-size: 15px;
+  white-space: nowrap;
 }
 
 .social-links li a {
@@ -1079,6 +1080,30 @@ footer .wrapper {
 =================================*/
 
 /*media query starts*/
+/*media query for 1440px starts here*/
+@media only screen and (max-width: 1440px) {
+  
+  .menus ul li a,.title {
+    font-size: 14px;
+  }
+
+  .page-item {
+    width: 90%;
+  }
+}
+
+/*media query for 1024px starts here*/
+@media only screen and (max-width: 1024px) {
+  
+  .footer-links li a,.copyright {
+    font-size: 12px;
+  }
+
+
+}
+
+
+/*media query starts*/
 /*media query for 995px starts here*/
 @media only screen and (max-width: 995px) {
 
@@ -1086,6 +1111,18 @@ footer .wrapper {
     flex-direction: column;
     row-gap: 10px;
     align-items: flex-start;
+  }
+
+  .menus {
+    width: 50%;
+  }
+
+  .search-field {
+    padding: 7px 30px;
+  }
+
+  .search-button {
+    padding: 3%;
   }
 
   footer .wrapper {
@@ -1099,6 +1136,18 @@ footer .wrapper {
 
   .details-overview {
     width: 80%;
+  }
+
+  .watchlist-item {
+    width: 100%;
+  }
+
+  .hover-content {
+    top: 30%;
+  }
+
+  .pagination-title,.page-item .view-details {
+    font-size: 14px;
   }
 
 }
@@ -1154,4 +1203,32 @@ footer .wrapper {
     font-size: 20px;
   }
 
+  .movie-content:hover > .hover-content , .tv-content:hover > .hover-content , .news-content:hover > .hover-content {
+    display: none;
+  }
+
+  .title {
+    font-size: 11px;
+  }
+
+  .removefrom-watchlist {
+    padding: 6px;
+    font-size: 10px;
+  }
+
+  .pagination-title,.page-item .view-details {
+    font-size: 10px;
+  }
+
+  .page-item {
+    width: 100%;
+  }
+
+}
+
+/*media query for 540px starts here*/
+@media only screen and (max-width: 540px) {
+  .pagination-controls span {
+    font-size: 12px;
+  }
 }
