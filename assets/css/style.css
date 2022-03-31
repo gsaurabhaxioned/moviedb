@@ -693,13 +693,11 @@ input[type="submit"]:hover {
   margin: auto 0 auto auto;
 }
 
-.page-item-image,
-.pagination-title {
+.page-item li:first-child,.page-item li:nth-child(2) {
   margin-right: auto;
 }
 
-.pagination-title,
-.wa {
+.pagination-title {
   color: #ffa500;
 }
 
