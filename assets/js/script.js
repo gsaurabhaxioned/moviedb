@@ -450,13 +450,11 @@ const displayMovies = (category, classname) => {
           <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
-          <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="title">${i.title}</a>
+          <a href="details.html?id=${i.id}&type=movie" title="${i.title}" target="_self" class="title">${i.title}</a>
               <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
                   view details
               </a>
-              <div class="image-hover">
-              <span class="hover-content">click to explore</span>
-              </div>
+              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="hover-content">click to explore</a>
       </div>
           `);
       })
@@ -479,17 +477,15 @@ const displayTvshows = (category, classname) => {
       let result = data.results;
       result.forEach(i => {
         $("." + classname + " .slider").slick('slickAdd', `
-          <div class="movie-content ">
+          <div class="tv-content ">
           <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
-          <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="title">${i.name}</a>
+          <a href="details.html?id=${i.id}&type=tv" title="${i.name}" target="_self" class="title">${i.name}</a>
               <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="view-details">
               view details
           </a>
-          <div class="image-hover">
-          <span class="hover-content">click to explore</span>
-          </div>
+          <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="hover-content">click to explore</a>
       </div>
           `);
       })
@@ -519,29 +515,25 @@ const displayNews = (classname) => {
           <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self">
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
-          <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="title">${i.title}</a>
+          <a href="details.html?id=${i.id}&type=movie" title="${i.title}" target="_self" class="title">${i.title}</a>
               <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
               view details
           </a>
-          <div class="image-hover">
-          <span class="hover-content">click to explore</span>
-          </div>
+          <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="hover-content">click to explore</a>
       </div>
           `);
         }
         if (content_type === "tv") {
           $("." + classname + " .slider").slick('slickAdd', `
-            <div class="movie-content ">
+            <div class="tv-content ">
             <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self">
                 <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
             </a>
             <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="title">${i.name}</a>
-                <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
+                <a href="details.html?id=${i.id}&type=tv" title="${i.name}" target="_self" class="view-details">
                 view details
             </a>
-            <div class="image-hover">
-            <span class="hover-content">click to explore</span>
-            </div>
+            <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="hover-content">click to explore</a>
         </div>
             `);
         }
