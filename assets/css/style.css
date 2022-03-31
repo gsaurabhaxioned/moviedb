@@ -478,7 +478,7 @@ main .wrapper {
   border: 5px solid #ff0000;
 }
 
-form {
+.login-page .wrapper form {
   width: 50%;
   margin-top: 50px;
 }
@@ -585,6 +585,7 @@ input[type="submit"]:hover {
   top: 50%;
   left: 50%;
   background-color: rgb(0, 0, 0, 0.6);
+  color: #fff;
   font-size: 25px;
   transform: translate(-50%,-50%);
   white-space: nowrap;
@@ -650,13 +651,17 @@ input[type="submit"]:hover {
   -o-transition: all ease-in-out 0.5s;
 }
 
-.prev:hover,.nex:hover {
+.prev:hover,.next:hover {
   color: #00ffff;
 }
 
 .disabled {
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+.disabled:hover {
+  color: #fff;
 }
 
 .current {
@@ -705,7 +710,6 @@ input[type="submit"]:hover {
 }
 
 .title,
-.rate-us,
 .pagination-title {
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
@@ -726,14 +730,6 @@ input[type="submit"]:hover {
   width: 25%;
 }
 
-.rate-us {
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.rate-us:hover {
-  color: #00ffff;
-}
 
 /* paginated list page styling end  */
 /* details page styling start  */
@@ -784,20 +780,20 @@ input[type="submit"]:hover {
   text-shadow: 10px 10px 10px;
 }
 
-.details .addto-watchlist,
-.details .rate-us {
-  margin: 0;
-}
 
 .rate-us {
+  padding: 20px;
   margin-top: 15px;
   display: block;
   cursor: pointer;
+  background-color: #8b0000;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
   -moz-transition: all ease-in-out 0.5s;
   -ms-transition: all ease-in-out 0.5s;
   -o-transition: all ease-in-out 0.5s;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .rate-us:hover {
@@ -809,11 +805,17 @@ input[type="submit"]:hover {
   margin-right: 2%;
   color: #ffff00;
   font-family: "fontAwesome";
+  transition: all ease-in-out 0.5s;
+  -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
+  -ms-transition: all ease-in-out 0.5s;
+  -o-transition: all ease-in-out 0.5s;
 }
 
-.rate-us {
-  white-space: nowrap;
+.rate-us:hover:before {
+  color: #00ffff;
 }
+
 
 .details .item-id {
   display: none;
@@ -834,11 +836,16 @@ input[type="submit"]:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  row-gap: 20px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
   background: #8b0000;
+}
+
+.rating-box h3 {
+  font-size: 20px;
 }
 
 .rating-stars {
@@ -907,6 +914,7 @@ textarea {
   right: 0;
   background: #ffff00;
   text-indent: -9999px;
+  cursor: pointer;
 }
 
 .close-rating-box::before {
@@ -917,7 +925,7 @@ textarea {
   text-indent: 0;
 }
 
-.addto-watchlist:hover {
+.addto-watchlist:hover,.removefrom-watchlist:hover{
   background-image: linear-gradient(-45deg, #000, transparent);
   background-image: -webkit-linear-gradient(-45deg, #000, transparent);
   background-image: -moz-linear-gradient(-45deg, #000, transparent);
@@ -932,9 +940,16 @@ textarea {
   color: #ffff00;
   display: block;
   font-family: "fontAwesome";
+  transition: all ease-in-out 0.5s;
+  -webkit-transition: all ease-in-out 0.5s;
+  -moz-transition: all ease-in-out 0.5s;
+  -ms-transition: all ease-in-out 0.5s;
+  -o-transition: all ease-in-out 0.5s;
 }
 
-
+.addto-watchlist:hover:after {
+  color: #00ffff;
+}
 
 /* details page styling end  */
 /* watchlist page styling start  */
