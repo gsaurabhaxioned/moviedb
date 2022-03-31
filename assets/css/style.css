@@ -207,7 +207,7 @@ header .wrapper {
   border-color: #ffff00;
 }
 
-.search-button {
+.search-button,.closeresult {
   padding: 4%;
   border: 3px solid rgb(0, 0, 0, 0.6);
   border-radius: 100%;
@@ -225,7 +225,7 @@ header .wrapper {
   -o-transition: all ease-in-out 0.5s;
 }
 
-.search-button::before {
+.search-button::before,.closeresult::before {
   content: "\f002";
   float: right;
   font-family: "fontAwesome";
@@ -237,17 +237,21 @@ header .wrapper {
   -o-transition: all ease-in-out 0.5s;
 }
 
-.search-button:hover {
+.closeresult::before {
+  content: "\f00d";
+}
+
+.search-button:hover,.closeresult:hover {
   border-color: #00ffff;
   background-color: transparent;
 }
 
-.search-button:hover::before {
+.search-button:hover::before,.closeresult:hover:before {
   color: #00ffff;
 }
 
 .search-result {
-  width: 100%;
+  width: auto;
   padding: 10px;
   margin-top: 10px;
   display: none;
