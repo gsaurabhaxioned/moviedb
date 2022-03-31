@@ -26,8 +26,8 @@ $(document).ready(function () {
   }
 
   // function call to display trending shows
-  if ($(".trending-news").length > 0){ 
-  displayNews("trending-news");
+  if ($(".trending-news").length > 0) {
+    displayNews("trending-news");
   }
 
   // initialising variables for login form 
@@ -89,38 +89,38 @@ $(document).ready(function () {
     }
   })
 
-      //js code to check is user logged in?
-    let valid = localStorage.getItem('validuser');
-      if (!($(".login-page").length > 0)) {
-        if (!valid) {
-            window.location.href = 'index.html';
-        }
-    } else {
-        if (valid) {
-          if (($(".login-page").length > 0)) {
-            window.location.href = "homepage.html";
-          }
-            window.history.back();
-        }
+  //js code to check is user logged in?
+  let valid = localStorage.getItem('validuser');
+  if (!($(".login-page").length > 0)) {
+    if (!valid) {
+      window.location.href = 'index.html';
     }
+  } else {
+    if (valid) {
+      if (($(".login-page").length > 0)) {
+        window.location.href = "homepage.html";
+      }
+      window.history.back();
+    }
+  }
 
-    //js code for loggout functionality
-    $('.logout').click(() => {
-        localStorage.removeItem("validuser");
-        window.location.href = 'index.html';
-    });
+  //js code for loggout functionality
+  $('.logout').click(() => {
+    localStorage.removeItem("validuser");
+    window.location.href = 'index.html';
+  });
 
   // js code for search functionality 
-  $(".search-button").click(()=>{
-    if($(".search-field").val().length > 0) {
+  $(".search-button").click(() => {
+    if ($(".search-field").val().length > 0) {
       $(".search-button").toggleClass("closeresult");
       $(".search-result").toggleClass("show-flex");
       showresults();
     }
-  }); 
+  });
 
-  $(".search-field").keypress((e)=>{
-    if(e.key === "Enter") {
+  $(".search-field").keypress((e) => {
+    if (e.key === "Enter") {
       $(".search-button").addClass("closeresult");
       $(".search-result").addClass("show-flex");
       showresults();
@@ -178,7 +178,7 @@ $(document).ready(function () {
       category = searchurlparam.get('cat'),
       page_no = parseInt(searchurlparam.get('page')),
       api_key = "8d6f976a3d568729504eb85502e74226";
-      pagination_url = "https://api.themoviedb.org/3/" + content_type + "/" + category + "?api_key=" + api_key + "&language=en-US&page=1";
+    pagination_url = "https://api.themoviedb.org/3/" + content_type + "/" + category + "?api_key=" + api_key + "&language=en-US&page=1";
     if (category === "trending") {
       pagination_url = " https://api.themoviedb.org/3/trending/all/day?api_key=" + api_key + "&language=en-US&page=1";
     }
@@ -198,20 +198,22 @@ $(document).ready(function () {
 
         next.click(() => {
           $(".prev").removeClass("disabled");
-          page_no = parseInt(page_no + 1);
           console.log(page_no);
           console.log(total_pages);
           console.log(pagination_url);
           if (page_no < total_pages) {
+            page_no = parseInt(page_no + 1);
+            $(".current").html(page_no);
+            $(".next").on("click");
             gotoPage(page_no, content_type, category);
           } else {
             $(".next").addClass("disabled");
-            $(".current").html(total_pages);
+            $(".current").html(total_pages);;
           }
-          $(".current").html(page_no);
         })
 
         prev.click(() => {
+          $(".next").removeClass("disabled");
           if (page_no !== 1) {
             page_no = parseInt(page_no - 1);
             console.log(page_no);
@@ -362,26 +364,26 @@ $(document).ready(function () {
 
   // js code for rating functionality 
 
-  $(".details .wrapper").on("click",".rate-us",()=>{
+  $(".details .wrapper").on("click", ".rate-us", () => {
     $(".rating-background").show();
     $(".rating-box").show();
   })
 
 
-  $(".feedback-submit").click((e)=>{
+  $(".feedback-submit").click((e) => {
     e.preventDefault();
-    let starcount= $("input[type='radio']:checked").length;
-    if(starcount === 0){
+    let starcount = $("input[type='radio']:checked").length;
+    if (starcount === 0) {
       $(".submit-empty-response").show();
-    }else {
+    } else {
       $(".submit-empty-response").hide();
       $(".submit-response").show();
-      $(".rating-box").hide("bounce",2000);
+      $(".rating-box").hide("bounce", 2000);
       $(".rating-background").hide(4000);
     }
   });
 
-  $(".close-rating-box").click(()=>{
+  $(".close-rating-box").click(() => {
     $(".rating-background").hide();
   })
 
@@ -404,8 +406,8 @@ $(document).ready(function () {
     }
     let old_data = JSON.parse(localStorage.getItem("favourites"));
     let repeated_id = false;
-    old_data.forEach(i=>{
-      if(i.id === new_data.id) {
+    old_data.forEach(i => {
+      if (i.id === new_data.id) {
         repeated_id = true;
       }
     })
@@ -421,16 +423,16 @@ $(document).ready(function () {
   // code to display or remove from watchlist/favouries local storage
   if ($(".watchlist").length > 0) {
     showWatchlist();
- 
-    $(".watchlist .wrapper").on("click",".removefrom-watchlist",function(){
+
+    $(".watchlist .wrapper").on("click", ".removefrom-watchlist", function () {
       let old_data = JSON.parse(localStorage.getItem("favourites")),
-          deleted_item = $(this).next().html(),
-         new_data = old_data.filter(i=>i.id !== deleted_item);
-         old_data.forEach(i=>console.log(i.id));
-          
-          alert(deleted_item);
-    localStorage.setItem("favourites", JSON.stringify(new_data));
-    showWatchlist();
+        deleted_item = $(this).next().html(),
+        new_data = old_data.filter(i => i.id !== deleted_item);
+      old_data.forEach(i => console.log(i.id));
+
+      alert(deleted_item);
+      localStorage.setItem("favourites", JSON.stringify(new_data));
+      showWatchlist();
     })
   }
 })
@@ -584,7 +586,7 @@ const gotoPage = (page, content_type, category) => {
           }
         })
       },
-      error: (error)=>{
+      error: (error) => {
         alert("something went wrong");
         console.log(error);
       }
@@ -635,43 +637,43 @@ const gotoPage = (page, content_type, category) => {
   }
 }
 
-const showresults = ()=>{
-  
+const showresults = () => {
+
   $(".search-result").html("");
   let search_text = $(".search-field").val(),
-   api_key = "8d6f976a3d568729504eb85502e74226";
+    api_key = "8d6f976a3d568729504eb85502e74226";
   $.ajax({
-    url: "https://api.themoviedb.org/3/search/multi?api_key="+api_key+"&language=en-US&page=1&include_adult=false&query="+search_text,
+    url: "https://api.themoviedb.org/3/search/multi?api_key=" + api_key + "&language=en-US&page=1&include_adult=false&query=" + search_text,
     type: "GET",
-    success: (data) =>{
+    success: (data) => {
       let result = data.results;
-      result.forEach(i=>{
-        if(i.media_type === "movie"){
-        $(".search-result").append(`
+      result.forEach(i => {
+        if (i.media_type === "movie") {
+          $(".search-result").append(`
           <li><a href="details.html?id=${i.id}&type=${i.media_type}" title="Get Details" class="results">${i.title}</li>
         `);
-        }else{
+        } else {
           $(".search-result").append(`
           <li><a href="details.html?id=${i.id}&type=${i.media_type}" title="Get Details" class="results">${i.name}</li>
         `);
         }
-      })       
+      })
     },
     error: (error) => {
       alert("something went wrong,try again");
       console.log(error);
     }
   });
- 
+
 }
 
 // function to display watchlist 
 
-const showWatchlist = ()=>{
+const showWatchlist = () => {
   $(".watchlist .wrapper").html("");
   let favourites = JSON.parse(localStorage.getItem("favourites")),
-     api_key = "8d6f976a3d568729504eb85502e74226";
-    //  favourites = [...allfavourites.reduce((map, obj) => map.set(obj.id, obj), new Map()).values()];
+    api_key = "8d6f976a3d568729504eb85502e74226";
+  //  favourites = [...allfavourites.reduce((map, obj) => map.set(obj.id, obj), new Map()).values()];
   console.log(favourites);
   favourites.forEach(i => {
     console.log(i);
@@ -695,7 +697,7 @@ const showWatchlist = ()=>{
       `);
 
         },
-        error: (error)=>{
+        error: (error) => {
           alert("something went wrong,try again");
           console.log(error);
         }
@@ -721,7 +723,7 @@ const showWatchlist = ()=>{
       `);
 
         },
-        error: (error)=>{
+        error: (error) => {
           alert("something went wrong,try again");
           console.log(error);
         }
