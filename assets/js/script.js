@@ -3,6 +3,7 @@ $(document).ready(function () {
   // code for hamburger icon 
   $(".hamburger").click(() => {
     $(".menus").toggleClass("headermenus-show");
+    $(".page-blur").toggleClass("page-show");
     $(".hamburger").toggleClass("cross");
   });
 
@@ -24,8 +25,10 @@ $(document).ready(function () {
     displayTvshows("airing_today", "airing-today");
   }
 
-  // function call to display trending shows 
+  // function call to display trending shows
+  if ($(".trending-news").length > 0){ 
   displayNews("trending-news");
+  }
 
   // initialising variables for login form 
   let loginform = $('.loginform'),
@@ -79,12 +82,33 @@ $(document).ready(function () {
       passerror.html("please enter password")
       $('.password').addClass("errorbox");
     } else if (username.val() === user1 && password.val() === pass1) {
-      localStorage.setItem('validuser', 'true');
-      window.open('homepage.html');
+      localStorage.setItem('validuser', true);
+      window.location.href = 'homepage.html';
     } else {
       passerror.html("invalid username or password");
     }
   })
+
+      //js code to check is user logged in?
+    let valid = localStorage.getItem('validuser');
+      if (!($(".login-page").length > 0)) {
+        if (!valid) {
+            window.location.href = 'index.html';
+        }
+    } else {
+        if (valid) {
+          if (($(".login-page").length > 0)) {
+            window.location.href = "homepage.html";
+          }
+            window.history.back();
+        }
+    }
+
+    //js code for loggout functionality
+    $('.logout').click(() => {
+        localStorage.removeItem("validuser");
+        window.location.href = 'index.html';
+    });
 
   // js code for search functionality 
   $(".search-button").click(()=>{
@@ -386,6 +410,10 @@ $(document).ready(function () {
           </div>
         `);
 
+          },
+          error: (error)=>{
+            alert("something went wrong,try again");
+            console.log(error);
           }
         });
       }
@@ -409,6 +437,10 @@ $(document).ready(function () {
           </div>
         `);
 
+          },
+          error: (error)=>{
+            alert("something went wrong,try again");
+            console.log(error);
           }
         });
       }
@@ -450,7 +482,7 @@ const displayMovies = (category, classname) => {
       </div>
           `);
       })
-      $(".slider").slick();
+      // $(".slider").slick();
     },
     error: (error) => {
       alert("something went wrong,try again");
@@ -474,13 +506,13 @@ const displayTvshows = (category, classname) => {
               <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
           </a>
           <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="title">${i.name}</a>
-              <a href="details.html?id=${i.id}&type=movie" title="Get Details" target="_self" class="view-details">
+              <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="view-details">
               view details
           </a>
       </div>
           `);
       })
-      $(".slider").slick();
+      // $(".slider").slick();
     },
     error: (error) => {
       alert("something went wrong,try again");
@@ -527,7 +559,7 @@ const displayNews = (classname) => {
             `);
         }
       })
-      $(".slider").slick();
+      // $(".slider").slick();
     },
     error: (error) => {
       alert("something went wrong,try again");
@@ -577,6 +609,10 @@ const gotoPage = (page, content_type, category) => {
               `);
           }
         })
+      },
+      error: (error)=>{
+        alert("something went wrong");
+        console.log(error);
       }
     })
   } else {
@@ -621,7 +657,6 @@ const gotoPage = (page, content_type, category) => {
         alert("something went wrong,try again");
         console.log(error);
       }
-
     });
   }
 }
