@@ -370,11 +370,11 @@ $(document).ready(function () {
     e.preventDefault();
     let starcount= $("input[type='radio']:checked").length;
     if(starcount === 0){
-      $(".submit-response").html("No stars selected !");
-      $(".submit-response").show();
+      $(".submit-empty-response").show();
     }else {
-      $(".submit-response").html("Thank you for rating !");
-    $(".submit-response").show();
+      $(".submit-empty-response").hide();
+      $(".submit-response").show();
+      $(".rating-background").hide("explode",{pieces: 64},2000);
     }
   });
 
