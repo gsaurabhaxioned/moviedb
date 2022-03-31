@@ -402,8 +402,7 @@ $(document).ready(function () {
     } else {
       $(".submit-empty-response").hide();
       $(".submit-response").show();
-      $(".rating-box").hide("bounce", 2000);
-      $(".rating-background").hide(4000);
+      $(".rating-background").fadeOut(4000);
     }
   });
 
