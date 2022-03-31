@@ -89,16 +89,15 @@ $(document).ready(function () {
 
   // js code for search functionality 
   $(".search-button").click(()=>{
-    showresults();
+    if($(".search-field").val().length > 0) {
+      $(".search-button").toggleClass("closeresult");
+      showresults();
+    }
   }); 
 
   $(".search-field").keypress((e)=>{
     if(e.key === "Enter") {
       showresults();
-    }else if(e.key === "") {
-      if($(".search-field").val === ""){
-        $(".search-result").removeClass("show-flex");
-      }
     }
   })
 
