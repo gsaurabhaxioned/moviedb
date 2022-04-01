@@ -972,6 +972,10 @@ textarea {
   text-indent: 0;
 }
 
+.content-id {
+  display: none;
+}
+
 .addto-watchlist,
 .removefrom-watchlist {
   background-image: linear-gradient(45deg, #000,#696969);
