@@ -250,6 +250,7 @@ header .wrapper {
   z-index: 10;
   top: 0;
   right: 0;
+  cursor: pointer;
   text-indent: -9999px;
 }
 
@@ -380,6 +381,7 @@ header .wrapper {
 
 .search-result {
   width: auto;
+  max-height: 200px;
   padding: 10px;
   margin-top: 10px;
   display: none;
@@ -388,7 +390,20 @@ header .wrapper {
   position: absolute;
   z-index: 20;
   top: 100%;
-  background: rgb(0, 0, 0, 0.6);
+  background-color: rgb(0, 0, 0, 0.6);
+  overflow-y: scroll;
+}
+
+.search-result li a:hover {
+  color: #00ffff;
+}
+
+.search-result::-webkit-scrollbar {
+  width: 3px;
+}
+
+.search-result::-webkit-scrollbar-thumb {
+  background-color: #00ffff;
 }
 
 .show-flex {
@@ -411,6 +426,7 @@ header .wrapper {
   -moz-border-radius: 12px;
   -ms-border-radius: 12px;
   -o-border-radius: 12px;
+  background-color: transparent;
   background-image: linear-gradient(45deg, #ff0000, transparent);
   background-image: -webkit-linear-gradient(45deg, #ff0000, transparent);
   background-image: -moz-linear-gradient(45deg, #ff0000, transparent);
@@ -424,7 +440,10 @@ header .wrapper {
 }
 
 .logout:hover {
-  background-color: transparent;
+  background-image: linear-gradient(-45deg, #ff0000, transparent);
+  background-image: -webkit-linear-gradient(-45deg, #ff0000, transparent);
+  background-image: -moz-linear-gradient(-45deg, #ff0000, transparent);
+  background-image: -o-linear-gradient(-45deg, #ff0000, transparent);
   color: #00ffff;
 }
 
@@ -514,6 +533,7 @@ input[type="submit"] {
   padding: 13px;
   margin: 20px auto;
   border: 1px solid #0000ff;
+  background-color: #000;
   background-image: linear-gradient(45deg, #0000ff, transparent);
   background-image: -webkit-linear-gradient(45deg, #0000ff, transparent);
   background-image: -o-linear-gradient(45deg, #0000ff, transparent);
@@ -528,8 +548,9 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  background-color: transparent;
-  color: #fff;
+  border-color: #fff;
+  background-color: initial;
+  color: #00ffff;
 }
 
 /* login page styling end  */
@@ -1257,6 +1278,98 @@ footer .wrapper {
     padding: 5px;
   }
 
+  .rating-stars label::before,.submit-response span,.submit-empty-response span {
+    font-size: 15px;
+  }
+
+  .rating-box input[type="submit"] {
+    font-size: 12px;
+  }
+
+  .menus ul li a:hover {
+    color: #ffff00;
+  }
+
+  .search-field:hover {
+    border-color: transparent;
+  }
+
+  .search-button:hover,.closeresult:hover {
+    border-color: transparent;
+    background-color: rgb(0, 0, 0, 0.6);
+  }
+
+  .search-button:hover::before,.closeresult:hover:before {
+    color: #ffff00;
+  }
+
+  input[type="submit"]:hover {
+    border-color: #0000ff;
+   background-color: #000;
+    color: #fff;
+  }
+
+  .logout:hover {
+    background-image: linear-gradient(45deg, #ff0000, transparent);
+    background-image: -webkit-linear-gradient(45deg, #ff0000, transparent);
+    background-image: -moz-linear-gradient(45deg, #ff0000, transparent);
+    background-image: -o-linear-gradient(45deg, #ff0000, transparent);
+    color: #ffff00;
+  }
+
+  .title:hover {
+    color: #ffa500;
+  }
+
+  .view-details:hover, .addto-watchlist:hover, .removefrom-watchlist:hover,.view-more:hover {
+    color: #fff;
+  }
+
+  .social-links li a:hover:before,.footer-links li a:hover {
+    color: #ffff00;
+  }
+
+  .search-result li a:hover {
+    color: #fff;
+  }
+
+  .view-details:hover {
+    background-image: linear-gradient(45deg, #000,transparent);
+    background-image: -webkit-linear-gradient(45deg, #000,transparent);
+    background-image: -moz-linear-gradient(45deg, #000,transparent);
+    background-image: -o-linear-gradient(45deg, #000,transparent);
+  }
+
+  .view-more:hover {
+    background-image: linear-gradient(45deg, #0000ff, transparent);
+    background-image: -webkit-linear-gradient(45deg, #0000ff, transparent);
+    background-image: -o-linear-gradient(45deg, #0000ff, transparent);
+    background-image: -moz-linear-gradient(45deg, #0000ff, transparent);
+  }
+
+  .addto-watchlist:hover,.removefrom-watchlist:hover{
+    background-image: linear-gradient(45deg, #000,#696969);
+    background-image: -webkit-linear-gradient(45deg, #000,#696969);
+    background-image: -moz-linear-gradient(45deg, #000,#696969);
+    background-image: -o-linear-gradient(45deg, #000,#696969);
+    color: #fff;
+  }
+
+  .watchlist-title:hover {
+    color: #ffa500;
+  }
+
+  .rate-us:hover {
+    background-image: linear-gradient(45deg,#8b0000,transparent);
+    background-image: -webkit-linear-gradient(45deg,#8b0000,transparent);
+    background-image: -moz-linear-gradient(45deg,#8b0000,transparent);
+    background-image: -o-linear-gradient(45deg,#8b0000,transparent);
+    color: #fff;
+  }
+  
+  .addto-watchlist:hover:after,.rate-us:hover::before {
+    color: #ffff00;
+  }
 }
 
 /*media query for 540px starts here*/
