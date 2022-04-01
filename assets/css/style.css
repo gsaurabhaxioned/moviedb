@@ -566,6 +566,10 @@ input[type="submit"]:hover {
   margin-top: 50px;
 }
 
+.slick-prev,.slick-next {
+  top: 30%;
+}
+
 .movie-categoery,
 .tvshow-categoery {
   padding: 20px 0;
