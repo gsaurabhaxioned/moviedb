@@ -226,6 +226,8 @@ $(document).ready(function () {
           $(".current").html(page_no);
         });
 
+        //code to show contnets in paginated list
+
         if (content_type === "movie") {
           result.forEach(i => {
             $(".paginated-contents").append(`
@@ -404,7 +406,7 @@ $(document).ready(function () {
   })
   let stars = 1;
 
-  $(".rating-star").click(function(){
+  $(".rating-star").click(function () {
     stars = $(this).prev().val();
   })
 
@@ -458,7 +460,7 @@ $(document).ready(function () {
     alert("added to watchlist");
   });
 
-  // code to display or remove from watchlist/favouries local storage
+  // code to display or remove from watchlist/favourites local storage
 
   if ($(".watchlist").length > 0) {
     showWatchlist();
