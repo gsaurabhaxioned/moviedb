@@ -557,7 +557,9 @@ input[type="submit"]:hover {
 
 /* login page styling end  */
 /* movie and tv show category pages styling start  */
-.movie-content,.tv-content,.news-content {
+.movie-content,
+.tv-content,
+.news-content {
   position: relative;
   text-align: center;
 }
@@ -566,7 +568,8 @@ input[type="submit"]:hover {
   margin-top: 50px;
 }
 
-.slick-prev,.slick-next {
+.slick-prev,
+.slick-next {
   top: 30%;
 }
 
@@ -575,7 +578,8 @@ input[type="submit"]:hover {
   padding: 20px 0;
 }
 
-.view-details,.addto-watchlist,
+.view-details,
+.addto-watchlist,
 .removefrom-watchlist {
   padding: 10px;
   margin-top: 15px;
@@ -585,10 +589,10 @@ input[type="submit"]:hover {
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
   display: inline-block;
-  background-image: linear-gradient(45deg, #000,transparent);
-  background-image: -webkit-linear-gradient(45deg, #000,transparent);
-  background-image: -moz-linear-gradient(45deg, #000,transparent);
-  background-image: -o-linear-gradient(45deg, #000,transparent);
+  background-image: linear-gradient(45deg, #000, transparent);
+  background-image: -webkit-linear-gradient(45deg, #000, transparent);
+  background-image: -moz-linear-gradient(45deg, #000, transparent);
+  background-image: -o-linear-gradient(45deg, #000, transparent);
   color: #fff;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
@@ -619,11 +623,13 @@ input[type="submit"]:hover {
   background-color: rgb(0, 0, 0, 0.6);
   color: #fff;
   font-size: 25px;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   white-space: nowrap;
 }
 
-.movie-content:hover > .hover-content , .tv-content:hover > .hover-content , .news-content:hover > .hover-content {
+.movie-content:hover>.hover-content,
+.tv-content:hover>.hover-content,
+.news-content:hover>.hover-content {
   display: block;
 }
 
@@ -673,7 +679,8 @@ input[type="submit"]:hover {
   align-items: center;
 }
 
-.prev,.next {
+.prev,
+.next {
   padding: 0 10px;
   cursor: pointer;
   transition: all ease-in-out 0.5s;
@@ -683,7 +690,8 @@ input[type="submit"]:hover {
   -o-transition: all ease-in-out 0.5s;
 }
 
-.prev:hover,.next:hover {
+.prev:hover,
+.next:hover {
   color: #00ffff;
 }
 
@@ -725,7 +733,8 @@ input[type="submit"]:hover {
   margin: auto 0 auto auto;
 }
 
-.page-item li:first-child,.page-item li:nth-child(2) {
+.page-item li:first-child,
+.page-item li:nth-child(2) {
   margin-right: auto;
 }
 
@@ -815,7 +824,8 @@ input[type="submit"]:hover {
   text-shadow: 10px 10px 10px;
 }
 
-.trp-info,.program-status {
+.trp-info,
+.program-status {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -825,10 +835,10 @@ input[type="submit"]:hover {
   padding: 20px;
   margin-top: 15px;
   display: block;
-  background-image: linear-gradient(45deg,#8b0000,transparent);
-  background-image: -webkit-linear-gradient(45deg,#8b0000,transparent);
-  background-image: -moz-linear-gradient(45deg,#8b0000,transparent);
-  background-image: -o-linear-gradient(45deg,#8b0000,transparent);
+  background-image: linear-gradient(45deg, #8b0000, transparent);
+  background-image: -webkit-linear-gradient(45deg, #8b0000, transparent);
+  background-image: -moz-linear-gradient(45deg, #8b0000, transparent);
+  background-image: -o-linear-gradient(45deg, #8b0000, transparent);
   cursor: pointer;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
@@ -840,10 +850,10 @@ input[type="submit"]:hover {
 }
 
 .rate-us:hover {
-  background-image: linear-gradient(-45deg,#8b0000,transparent);
-  background-image: -webkit-linear-gradient(-45deg,#8b0000,transparent);
-  background-image: -moz-linear-gradient(-45deg,#8b0000,transparent);
-  background-image: -o-linear-gradient(-45deg,#8b0000,transparent);
+  background-image: linear-gradient(-45deg, #8b0000, transparent);
+  background-image: -webkit-linear-gradient(-45deg, #8b0000, transparent);
+  background-image: -moz-linear-gradient(-45deg, #8b0000, transparent);
+  background-image: -o-linear-gradient(-45deg, #8b0000, transparent);
   color: #00ffff;
 }
 
@@ -887,7 +897,7 @@ input[type="submit"]:hover {
   top: 50%;
   left: 50%;
   background-color: #8b0000;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
 .rating-box h3 {
@@ -899,7 +909,7 @@ input[type="submit"]:hover {
   flex-direction: row-reverse;
 }
 
-.rating-stars  input{
+.rating-stars input {
   display: none;
 }
 
@@ -922,12 +932,12 @@ input[type="submit"]:hover {
   text-indent: 0;
 }
 
-.rating-stars input:not(:checked) ~ label:hover,
-.rating-stars input:not(:checked) ~ label:hover ~ label {
- color: #ffff00;
+.rating-stars input:not(:checked)~label:hover,
+.rating-stars input:not(:checked)~label:hover~label {
+  color: #ffff00;
 }
 
-.rating-stars input:checked ~ label {
+.rating-stars input:checked~label {
   color: #ffff00;
 }
 
@@ -935,15 +945,18 @@ textarea {
   width: 100%;
 }
 
-.submit-response,.submit-empty-response {
+.submit-response,
+.submit-empty-response {
   display: none;
 }
 
-.submit-response span,.submit-empty-response span {
+.submit-response span,
+.submit-empty-response span {
   font-size: 20px;
 }
 
-.submit-response span:after,.submit-empty-response::after {
+.submit-response span:after,
+.submit-empty-response::after {
   content: "\f118";
   margin-left: 5px;
   font-size: 20px;
@@ -972,23 +985,24 @@ textarea {
   text-indent: 0;
 }
 
-.content-id {
+.starcount {
   display: none;
 }
 
 .addto-watchlist,
 .removefrom-watchlist {
-  background-image: linear-gradient(45deg, #000,#696969);
-  background-image: -webkit-linear-gradient(45deg, #000,#696969);
-  background-image: -moz-linear-gradient(45deg, #000,#696969);
-  background-image: -o-linear-gradient(45deg, #000,#696969);
+  background-image: linear-gradient(45deg, #000, #696969);
+  background-image: -webkit-linear-gradient(45deg, #000, #696969);
+  background-image: -moz-linear-gradient(45deg, #000, #696969);
+  background-image: -o-linear-gradient(45deg, #000, #696969);
 }
 
-.addto-watchlist:hover,.removefrom-watchlist:hover{
-  background-image: linear-gradient(-45deg, #000,#696969);
-  background-image: -webkit-linear-gradient(-45deg, #000,#696969);
-  background-image: -moz-linear-gradient(-45deg, #000,#696969);
-  background-image: -o-linear-gradient(-45deg, #000,#696969);
+.addto-watchlist:hover,
+.removefrom-watchlist:hover {
+  background-image: linear-gradient(-45deg, #000, #696969);
+  background-image: -webkit-linear-gradient(-45deg, #000, #696969);
+  background-image: -moz-linear-gradient(-45deg, #000, #696969);
+  background-image: -o-linear-gradient(-45deg, #000, #696969);
   color: #00ffff;
 }
 
@@ -1139,8 +1153,9 @@ footer .wrapper {
 /*media query starts*/
 /*media query for 1440px starts here*/
 @media only screen and (max-width: 1440px) {
-  
-  .menus ul li a,.title {
+
+  .menus ul li a,
+  .title {
     font-size: 14px;
   }
 
@@ -1160,8 +1175,9 @@ footer .wrapper {
 
 /*media query for 1024px starts here*/
 @media only screen and (max-width: 1024px) {
-  
-  .footer-links li a,.copyright {
+
+  .footer-links li a,
+  .copyright {
     font-size: 12px;
   }
 
@@ -1214,7 +1230,8 @@ footer .wrapper {
     width: 100%;
   }
 
-  .pagination-title,.page-item .view-details {
+  .pagination-title,
+  .page-item .view-details {
     font-size: 14px;
   }
 
@@ -1282,7 +1299,9 @@ footer .wrapper {
     font-size: 20px;
   }
 
-  .movie-content:hover > .hover-content , .tv-content:hover > .hover-content , .news-content:hover > .hover-content {
+  .movie-content:hover>.hover-content,
+  .tv-content:hover>.hover-content,
+  .news-content:hover>.hover-content {
     display: none;
   }
 
@@ -1295,7 +1314,8 @@ footer .wrapper {
     font-size: 10px;
   }
 
-  .pagination-title,.page-item .view-details {
+  .pagination-title,
+  .page-item .view-details {
     font-size: 10px;
   }
 
@@ -1306,12 +1326,14 @@ footer .wrapper {
   .watchlist-title {
     font-size: 11px;
   }
-  
+
   .removefrom-watchlist {
     padding: 5px;
   }
 
-  .rating-stars label::before,.submit-response span,.submit-empty-response span {
+  .rating-stars label::before,
+  .submit-response span,
+  .submit-empty-response span {
     font-size: 15px;
   }
 
@@ -1327,38 +1349,45 @@ footer .wrapper {
     border-color: #ffff00;
   }
 
-  .search-button:hover,.closeresult:hover {
+  .search-button:hover,
+  .closeresult:hover {
     border-color: #ffff00;
     background-color: rgb(0, 0, 0, 0.6);
   }
 
-  .search-button:hover::before,.closeresult:hover:before {
+  .search-button:hover::before,
+  .closeresult:hover:before {
     color: #ffff00;
   }
 
   input[type="submit"]:hover {
-   border-color: #0000ff;
-   background-color: #000;
-   color: #fff;
+    border-color: #0000ff;
+    background-color: #000;
+    color: #fff;
   }
-  
+
   .title:hover {
     color: #ffa500;
   }
 
-  .view-details:hover, .addto-watchlist:hover, .removefrom-watchlist:hover,.view-more:hover,.search-result li a:hover {
+  .view-details:hover,
+  .addto-watchlist:hover,
+  .removefrom-watchlist:hover,
+  .view-more:hover,
+  .search-result li a:hover {
     color: #fff;
   }
 
-  .social-links li a:hover:before,.footer-links li a:hover {
+  .social-links li a:hover:before,
+  .footer-links li a:hover {
     color: #ffff00;
   }
 
   .view-details:hover {
-    background-image: linear-gradient(45deg, #000,transparent);
-    background-image: -webkit-linear-gradient(45deg, #000,transparent);
-    background-image: -moz-linear-gradient(45deg, #000,transparent);
-    background-image: -o-linear-gradient(45deg, #000,transparent);
+    background-image: linear-gradient(45deg, #000, transparent);
+    background-image: -webkit-linear-gradient(45deg, #000, transparent);
+    background-image: -moz-linear-gradient(45deg, #000, transparent);
+    background-image: -o-linear-gradient(45deg, #000, transparent);
   }
 
   .view-more:hover {
@@ -1368,11 +1397,12 @@ footer .wrapper {
     background-image: -moz-linear-gradient(45deg, #0000ff, transparent);
   }
 
-  .addto-watchlist:hover,.removefrom-watchlist:hover{
-    background-image: linear-gradient(45deg, #000,#696969);
-    background-image: -webkit-linear-gradient(45deg, #000,#696969);
-    background-image: -moz-linear-gradient(45deg, #000,#696969);
-    background-image: -o-linear-gradient(45deg, #000,#696969);
+  .addto-watchlist:hover,
+  .removefrom-watchlist:hover {
+    background-image: linear-gradient(45deg, #000, #696969);
+    background-image: -webkit-linear-gradient(45deg, #000, #696969);
+    background-image: -moz-linear-gradient(45deg, #000, #696969);
+    background-image: -o-linear-gradient(45deg, #000, #696969);
     color: #fff;
   }
 
@@ -1381,14 +1411,15 @@ footer .wrapper {
   }
 
   .rate-us:hover {
-    background-image: linear-gradient(45deg,#8b0000,transparent);
-    background-image: -webkit-linear-gradient(45deg,#8b0000,transparent);
-    background-image: -moz-linear-gradient(45deg,#8b0000,transparent);
-    background-image: -o-linear-gradient(45deg,#8b0000,transparent);
+    background-image: linear-gradient(45deg, #8b0000, transparent);
+    background-image: -webkit-linear-gradient(45deg, #8b0000, transparent);
+    background-image: -moz-linear-gradient(45deg, #8b0000, transparent);
+    background-image: -o-linear-gradient(45deg, #8b0000, transparent);
     color: #fff;
   }
-  
-  .addto-watchlist:hover:after,.rate-us:hover::before {
+
+  .addto-watchlist:hover:after,
+  .rate-us:hover::before {
     color: #ffff00;
   }
 }
