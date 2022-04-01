@@ -402,9 +402,10 @@ $(document).ready(function () {
   $(".detail-info").on("click", ".rate-us", () => {
     $(".rating-background").show();
   })
+  let stars = 1;
 
   $(".rating-star").click(function(){
-    console.log($(this).prev().val());
+    stars = $(this).prev().val();
   })
 
   $(".feedback-submit").click((e) => {
@@ -416,6 +417,8 @@ $(document).ready(function () {
       $(".submit-empty-response").hide();
       $(".submit-response").show();
       $(".rating-background").fadeOut(4000);
+      $(".count").show();
+      $(".count").html(stars);
     }
   });
 
