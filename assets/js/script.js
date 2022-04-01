@@ -84,10 +84,12 @@ $(document).ready(function () {
     if (username.val().length === 0) {
       usererror.html("please enter username");
       $('.username').addClass("errorbox");
-    } else if (password.val().length === 0) {
+    }
+    if (password.val().length === 0) {
       passerror.html("please enter password")
       $('.password').addClass("errorbox");
-    } else if (username.val() === user1 && password.val() === pass1) {
+    }
+    if (username.val() === user1 && password.val() === pass1) {
       localStorage.setItem('validuser', true);
       window.location.href = 'homepage.html';
     } else {
