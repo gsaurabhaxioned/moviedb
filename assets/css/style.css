@@ -320,13 +320,13 @@ header .wrapper {
 
 .search-field {
   margin-top: 0;
-  border-color: transparent;
+  border-color: #ffff00;
   background-color: rgb(0, 0, 0, 0.6);
   color: #fff;
 }
 
 .search-field:focus {
-  border-color: #ffff00;
+  border-color: #00ffff;
   outline: none;
 }
 
@@ -337,7 +337,7 @@ header .wrapper {
 .search-button,
 .closeresult {
   padding: 4%;
-  border: 3px solid rgb(0, 0, 0, 0.6);
+  border: 3px solid #ffff00;
   border-radius: 100%;
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
@@ -1320,11 +1320,11 @@ footer .wrapper {
   }
 
   .search-field:hover {
-    border-color: transparent;
+    border-color: #ffff00;
   }
 
   .search-button:hover,.closeresult:hover {
-    border-color: transparent;
+    border-color: #ffff00;
     background-color: rgb(0, 0, 0, 0.6);
   }
 
