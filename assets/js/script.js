@@ -413,7 +413,6 @@ $(document).ready(function () {
     $(".rating-background").show();
   })
 
-
   $(".feedback-submit").click((e) => {
     e.preventDefault();
     let starcount = $("input[type='radio']:checked").length;
