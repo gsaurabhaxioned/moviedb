@@ -603,7 +603,6 @@ input[type="submit"]:hover {
   display: block;
 }
 
-
 .view-details:hover {
   background-image: linear-gradient(-45deg, #000, transparent);
   background-image: -webkit-linear-gradient(-45deg, #000, transparent);
@@ -778,6 +777,7 @@ input[type="submit"]:hover {
 .detail-info h3 {
   color: #deb887;
   font-size: 34px;
+  text-align: center;
 }
 
 .details .wrapper h2 {
@@ -946,6 +946,7 @@ textarea {
 .submit-response span:after,.submit-empty-response::after {
   content: "\f118";
   margin-left: 5px;
+  font-size: 20px;
   font-family: "fontAwesome";
 }
 
@@ -1159,6 +1160,11 @@ footer .wrapper {
   .footer-links li a,.copyright {
     font-size: 12px;
   }
+
+  .more-details {
+    width: 80%;
+  }
+
 }
 
 /*media query starts*/
@@ -1217,6 +1223,9 @@ footer .wrapper {
     font-size: 23px;
   }
 
+  .detail-info h3 {
+    font-size: 20px;
+  }
 
   header .wrapper {
     position: relative;
