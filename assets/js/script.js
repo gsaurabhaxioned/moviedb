@@ -42,7 +42,6 @@ $(document).ready(function () {
     passerror = $('.passworderror');
   localStorage.setItem('username1', 'saurabh96');
   localStorage.setItem('password1', '123456');
-  console.log(username);
 
   // validation on input boxes focusout
 
@@ -196,7 +195,6 @@ $(document).ready(function () {
       success: (data) => {
         let result = data.results,
           total_pages = data.total_pages;
-        console.log(total_pages);
         $(".prev").addClass("disabled");
         if (current === total_pages - 1) {
           $(".next").addClass("disabled");
@@ -206,9 +204,6 @@ $(document).ready(function () {
 
         next.click(() => {
           $(".prev").removeClass("disabled");
-          console.log(page_no);
-          console.log(total_pages);
-          console.log(pagination_url);
           if (page_no < total_pages) {
             page_no = parseInt(page_no + 1);
             $(".current").html(page_no);
@@ -224,7 +219,6 @@ $(document).ready(function () {
           $(".next").removeClass("disabled");
           if (page_no !== 1) {
             page_no = parseInt(page_no - 1);
-            console.log(page_no);
             gotoPage(page_no, content_type, category);
           } else {
             $(".prev").addClass("disabled");
@@ -322,7 +316,6 @@ $(document).ready(function () {
       },
       error: (error) => {
         alert("something went wrong,try again");
-        console.log(error);
       }
 
     });
@@ -342,9 +335,7 @@ $(document).ready(function () {
       url: "https://api.themoviedb.org/3/" + content_type + "/" + content_id + "?api_key=" + api_key + "&language=en-US",
       type: "GET",
       success: (data) => {
-        console.log(data);
         if (content_type === "movie") {
-          console.log(data.production_countries);
           $(".detail-info").append(`
             <h2>${data.title}</h2>
             <figure>
@@ -401,7 +392,6 @@ $(document).ready(function () {
       },
       error: (error) => {
         alert("something went wrong,try again");
-        console.log(error);
       }
 
     });
@@ -470,7 +460,6 @@ $(document).ready(function () {
       let old_data = JSON.parse(localStorage.getItem("favourites")),
         deleted_item = $(this).next().html(),
         new_data = old_data.filter(i => i.id !== deleted_item);
-      old_data.forEach(i => console.log(i.id));
       localStorage.setItem("favourites", JSON.stringify(new_data));
       showWatchlist();
     })
@@ -503,7 +492,6 @@ const displayMovies = (category, classname) => {
     },
     error: (error) => {
       alert("something went wrong,try again");
-      console.log(error);
     }
   });
 }
@@ -534,7 +522,6 @@ const displayTvshows = (category, classname) => {
     },
     error: (error) => {
       alert("something went wrong,try again");
-      console.log(error);
     }
   });
 }
@@ -583,7 +570,6 @@ const displayNews = (classname) => {
     },
     error: (error) => {
       alert("something went wrong,try again");
-      console.log(error);
     }
   });
 }
@@ -645,7 +631,6 @@ const gotoPage = (page, content_type, category) => {
       },
       error: (error) => {
         alert("something went wrong");
-        console.log(error);
       }
     })
   } else {
@@ -700,7 +685,6 @@ const gotoPage = (page, content_type, category) => {
       },
       error: (error) => {
         alert("something went wrong,try again");
-        console.log(error);
       }
     });
   }
@@ -729,7 +713,6 @@ const showresults = () => {
     },
     error: (error) => {
       alert("something went wrong,try again");
-      console.log(error);
     }
   });
 }
@@ -740,15 +723,12 @@ const showWatchlist = () => {
   $(".watchlist .wrapper").html("");
   let favourites = JSON.parse(localStorage.getItem("favourites")),
     api_key = "8d6f976a3d568729504eb85502e74226";
-  console.log(favourites);
   favourites.forEach(i => {
-    console.log(i);
     if (i.type === "movie") {
       $.ajax({
         url: " https://api.themoviedb.org/3/" + i.type + "/" + i.id + "?api_key=" + api_key,
         type: "GET",
         success: (data) => {
-          console.log(data.title);
           $(".watchlist .wrapper").append(`   
         <div class="watchlist-item ">
         <a href="details.html?id=${i.id}&type=${i.type}" title="Get Details" target="_self" class="watchlist-item-image">
@@ -764,7 +744,6 @@ const showWatchlist = () => {
         },
         error: (error) => {
           alert("something went wrong,try again");
-          console.log(error);
         }
       });
     }
@@ -789,7 +768,6 @@ const showWatchlist = () => {
         },
         error: (error) => {
           alert("something went wrong,try again");
-          console.log(error);
         }
       });
     }
