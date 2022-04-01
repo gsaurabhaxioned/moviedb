@@ -235,7 +235,7 @@ header .wrapper {
 .logo {
   padding: 11px;
   border-top-left-radius: 20px;
-  background: #000;
+  background-color: #000;
 }
 
 .logo a {
@@ -271,7 +271,6 @@ header .wrapper {
   flex-basis: 30%;
 }
 
-
 .menus ul {
   display: flex;
   justify-content: space-between;
@@ -297,7 +296,7 @@ header .wrapper {
   position: fixed;
   top: 0;
   left: 0;
-  background: rgb(0, 0, 0, 0.8);
+  background-color: rgb(0, 0, 0, 0.8);
   text-indent: -9999px;
 }
 
@@ -330,7 +329,6 @@ header .wrapper {
 .search-field:hover {
   border-color: #00ffff;
 }
-
 
 .search-button,
 .closeresult {
@@ -807,7 +805,6 @@ input[type="submit"]:hover {
   text-shadow: 10px 10px 10px;
 }
 
-
 .rate-us {
   padding: 20px;
   margin-top: 15px;
@@ -850,7 +847,6 @@ input[type="submit"]:hover {
   color: #00ffff;
 }
 
-
 .details .item-id {
   display: none;
 }
@@ -874,7 +870,7 @@ input[type="submit"]:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  background: #8b0000;
+  background-color: #8b0000;
   transform: translate(-50%,-50%);
 }
 
@@ -975,7 +971,6 @@ textarea {
   color: #00ffff;
 }
 
-
 .addto-watchlist::after {
   content: "\f067";
   margin-right: 2%;
@@ -1035,7 +1030,6 @@ textarea {
 .watchlist-id {
   display: none;
 }
-
 
 /* watchlist page styling end   */
 /*=================================
@@ -1116,8 +1110,6 @@ footer .wrapper {
 .footer-links li:first-child {
   border-right: 1px solid #ffff00;
 }
-
-
 
 /*=================================
   footer styling ends here
@@ -1304,9 +1296,9 @@ footer .wrapper {
   }
 
   input[type="submit"]:hover {
-    border-color: #0000ff;
+   border-color: #0000ff;
    background-color: #000;
-    color: #fff;
+   color: #fff;
   }
 
   .logout:hover {
@@ -1321,16 +1313,12 @@ footer .wrapper {
     color: #ffa500;
   }
 
-  .view-details:hover, .addto-watchlist:hover, .removefrom-watchlist:hover,.view-more:hover {
+  .view-details:hover, .addto-watchlist:hover, .removefrom-watchlist:hover,.view-more:hover,.search-result li a:hover {
     color: #fff;
   }
 
   .social-links li a:hover:before,.footer-links li a:hover {
     color: #ffff00;
-  }
-
-  .search-result li a:hover {
-    color: #fff;
   }
 
   .view-details:hover {
