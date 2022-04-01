@@ -8,7 +8,6 @@ $(document).ready(function () {
     $(".hamburger").toggleClass("cross");
   });
 
-
   let api_key = "8d6f976a3d568729504eb85502e74226";
   $(".slider").html("");
 
@@ -70,7 +69,6 @@ $(document).ready(function () {
   })
 
   //login validation
-
 
   loginform.submit((event) => {
     $('.username').removeClass('errorbox');
@@ -420,7 +418,6 @@ $(document).ready(function () {
     $(".rating-background").hide();
   })
 
-
   // js code for add to watchlist 
 
   url = new URL(window.location.href),
@@ -452,7 +449,6 @@ $(document).ready(function () {
     localStorage.setItem("favourites", JSON.stringify(old_data));
     alert("added to watchlist");
   });
-
 
   // code to display or remove from watchlist/favouries local storage
 
@@ -557,6 +553,7 @@ const displayNews = (classname) => {
       </ul>
           `);
         }
+
         if (content_type === "tv") {
           $("." + classname + " .slider").slick('slickAdd', `
             <ul class="tv-content ">
@@ -613,6 +610,7 @@ const gotoPage = (page, content_type, category) => {
         </ul>
             `);
           }
+
           if (media_type === "tv") {
             $(".paginated-contents").append(`
             <ul class="page-item">
@@ -698,7 +696,6 @@ const gotoPage = (page, content_type, category) => {
 }
 
 const showresults = () => {
-
   $(".search-result").html("");
   let search_text = $(".search-field").val(),
     api_key = "8d6f976a3d568729504eb85502e74226";
@@ -724,7 +721,6 @@ const showresults = () => {
       console.log(error);
     }
   });
-
 }
 
 // function to display watchlist 
@@ -754,7 +750,6 @@ const showWatchlist = () => {
             <span class="watchlist-id">${i.id}</span>
         </div>
       `);
-
         },
         error: (error) => {
           alert("something went wrong,try again");
@@ -780,7 +775,6 @@ const showWatchlist = () => {
             <span class="watchlist-id">${i.id}</span>
         </div>
       `);
-
         },
         error: (error) => {
           alert("something went wrong,try again");
