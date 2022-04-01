@@ -322,7 +322,7 @@ $(document).ready(function () {
   // js code for details page 
 
   if ($(".details").length > 0) {
-    $(".details .wrapper").html("");
+    $(".detail-info").html("");
     url = new URL(window.location.href),
       urlstring = url.search.slice(1),
       searchurlparam = new URLSearchParams(urlstring),
@@ -336,7 +336,7 @@ $(document).ready(function () {
         console.log(data);
         if (content_type === "movie") {
           console.log(data.production_countries);
-          $(".details .wrapper").append(`
+          $(".detail-info").append(`
             <h2>${data.title}</h2>
             <figure>
             <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie Poster">
@@ -355,7 +355,7 @@ $(document).ready(function () {
           `);
         }
         if (content_type === "tv") {
-          $(".details .wrapper").append(`
+          $(".detail-info").append(`
           <h2>${data.name}</h2>
           <figure>
           <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie Poster">
@@ -370,7 +370,7 @@ $(document).ready(function () {
           </div>
         `);
           if (data.production_companies[0].name.length > 0 && data.production_countries[0].name.length > 0) {
-            $(".details .wrapper .more-details").append(`
+            $(".detail-info .more-details").append(`
             <p class="production-company">Production company: <span class="text-red">${data.production_companies[0].name}</span></p>
             <p class="production-country">Production country: <span class="text-red">${data.production_countries[0].name}</span></p>
             `);
@@ -387,9 +387,8 @@ $(document).ready(function () {
 
   // js code for rating functionality 
 
-  $(".details .wrapper").on("click", ".rate-us", () => {
+  $(".detail-info").on("click", ".rate-us", () => {
     $(".rating-background").show();
-    $(".rating-box").show();
   })
 
 
@@ -416,7 +415,7 @@ $(document).ready(function () {
     urlstring = url.search.slice(1),
     searchurlparam = new URLSearchParams(urlstring),
     content_type = searchurlparam.get('type');
-  $(".details .wrapper").on('click', '.addto-watchlist', () => {
+  $(".detail-info").on('click', '.addto-watchlist', () => {
     let program_id = $(".addto-watchlist").next().html(),
       program_type = content_type;
     let new_data = {
