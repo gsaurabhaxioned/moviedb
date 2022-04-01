@@ -767,6 +767,11 @@ input[type="submit"]:hover {
   row-gap: 20px;
 }
 
+.detail-info h3 {
+  color: #deb887;
+  font-size: 34px;
+}
+
 .details .wrapper h2 {
   color: orange;
   text-shadow: 10px 10px 10px;
@@ -784,6 +789,7 @@ input[type="submit"]:hover {
 }
 
 .more-details {
+  width: 50%;
   text-align: center;
 }
 
@@ -794,15 +800,17 @@ input[type="submit"]:hover {
   font-size: 30PX;
 }
 
-.more-details p:first-child {
-  margin-top: 0;
-}
-
 .text-red {
   margin-top: 10px;
   color: #ff0000;
   display: block;
   text-shadow: 10px 10px 10px;
+}
+
+.trp-info,.program-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .rate-us {
