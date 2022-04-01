@@ -323,7 +323,13 @@ header .wrapper {
 
 .search-field:focus {
   border-color: #ffff00;
+  outline: none;
 }
+
+.search-field:hover {
+  border-color: #00ffff;
+}
+
 
 .search-button,
 .closeresult {
@@ -552,10 +558,10 @@ input[type="submit"]:hover {
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
   display: inline-block;
-  background-image: linear-gradient(45deg, #000, transparent);
-  background-image: -webkit-linear-gradient(45deg, #000, transparent);
-  background-image: -moz-linear-gradient(45deg, #000, transparent);
-  background-image: -o-linear-gradient(45deg, #000, transparent);
+  background-image: linear-gradient(45deg, #000,transparent);
+  background-image: -webkit-linear-gradient(45deg, #000,transparent);
+  background-image: -moz-linear-gradient(45deg, #000,transparent);
+  background-image: -o-linear-gradient(45deg, #000,transparent);
   color: #fff;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
@@ -782,7 +788,10 @@ input[type="submit"]:hover {
   padding: 20px;
   margin-top: 15px;
   display: block;
-  background-color: #8b0000;
+  background-image: linear-gradient(45deg,#8b0000,transparent);
+  background-image: -webkit-linear-gradient(45deg,#8b0000,transparent);
+  background-image: -moz-linear-gradient(45deg,#8b0000,transparent);
+  background-image: -o-linear-gradient(45deg,#8b0000,transparent);
   cursor: pointer;
   transition: all ease-in-out 0.5s;
   -webkit-transition: all ease-in-out 0.5s;
@@ -794,6 +803,10 @@ input[type="submit"]:hover {
 }
 
 .rate-us:hover {
+  background-image: linear-gradient(-45deg,#8b0000,transparent);
+  background-image: -webkit-linear-gradient(-45deg,#8b0000,transparent);
+  background-image: -moz-linear-gradient(-45deg,#8b0000,transparent);
+  background-image: -o-linear-gradient(-45deg,#8b0000,transparent);
   color: #00ffff;
 }
 
@@ -890,7 +903,7 @@ textarea {
   display: none;
 }
 
-.submit-response span {
+.submit-response span,.submit-empty-response span {
   font-size: 20px;
 }
 
@@ -922,11 +935,19 @@ textarea {
   text-indent: 0;
 }
 
+.addto-watchlist,
+.removefrom-watchlist {
+  background-image: linear-gradient(45deg, #000,#696969);
+  background-image: -webkit-linear-gradient(45deg, #000,#696969);
+  background-image: -moz-linear-gradient(45deg, #000,#696969);
+  background-image: -o-linear-gradient(45deg, #000,#696969);
+}
+
 .addto-watchlist:hover,.removefrom-watchlist:hover{
-  background-image: linear-gradient(-45deg, #000, transparent);
-  background-image: -webkit-linear-gradient(-45deg, #000, transparent);
-  background-image: -moz-linear-gradient(-45deg, #000, transparent);
-  background-image: -o-linear-gradient(-45deg, #000, transparent);
+  background-image: linear-gradient(-45deg, #000,#696969);
+  background-image: -webkit-linear-gradient(-45deg, #000,#696969);
+  background-image: -moz-linear-gradient(-45deg, #000,#696969);
+  background-image: -o-linear-gradient(-45deg, #000,#696969);
   color: #00ffff;
 }
 
@@ -1089,6 +1110,15 @@ footer .wrapper {
   .page-item {
     width: 90%;
   }
+
+  .hover-content {
+    top: 30%;
+  }
+
+  .watchlist-item {
+    width: 90%;
+  }
+
 }
 
 /*media query for 1024px starts here*/
@@ -1138,10 +1168,6 @@ footer .wrapper {
     width: 100%;
   }
 
-  .hover-content {
-    top: 30%;
-  }
-
   .pagination-title,.page-item .view-details {
     font-size: 14px;
   }
@@ -1165,7 +1191,7 @@ footer .wrapper {
     padding: 10px;
     position: absolute;
     top: 0;
-    background-color: rgb(255, 0, 0, 0.5);
+    background-color: rgb(255, 0, 0, 0.6);
     transform: translateY(-500px);
     transition: all ease-in-out 0.5s;
     -webkit-transition: all ease-in-out 0.5s;
@@ -1218,6 +1244,14 @@ footer .wrapper {
 
   .page-item {
     width: 100%;
+  }
+
+  .watchlist-title {
+    font-size: 11px;
+  }
+  
+  .removefrom-watchlist {
+    padding: 5px;
   }
 
 }
