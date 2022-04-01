@@ -169,9 +169,8 @@ $(document).ready(function () {
     $(".paginated-contents").html("");
     let prev = $(".prev"),
       current = $(".curent"),
-      next = $(".next");
-
-    url = new URL(window.location.href),
+      next = $(".next"),
+      url = new URL(window.location.href),
       urlstring = url.search.slice(1),
       searchurlparam = new URLSearchParams(urlstring),
       content_type = searchurlparam.get('type'),
