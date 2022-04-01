@@ -1163,6 +1163,10 @@ footer .wrapper {
     align-items: flex-start;
   }
 
+  .searchbar {
+    align-self: center;
+  }
+
   .menus {
     width: 50%;
   }
