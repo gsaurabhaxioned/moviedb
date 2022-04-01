@@ -351,17 +351,23 @@ $(document).ready(function () {
             <figure>
             <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie Poster">
             </figure>
+            <h3>${data.tagline}</h3>
             <p class="details-overview">${data.overview}</p>
             <button class="addto-watchlist">add to watchlist</button>
             <span class="item-id">${data.id}</span>
             <span class="rate-us">rate this movie</span>
             <div class="more-details">
+            <div class="program-status">
             <p class="status">Status:<span class="text-red">${data.status}</span></p>
             <p class="release-date">Release date: <span class="text-red">${data.release_date}</span></p>
+            </div>
+            <div class="trp-info">
+            <p>Popularity:<span class="text-red">${data.popularity}</span></p>
+            <p>Vote Count:<span class="text-red">${data.vote_count}</span></p>
+            </div>
             <p class="production-company">Production company: <span class="text-red">${data.production_companies[0].name}</span></p>
             <p class="production-country">Production country: <span class="text-red">${data.production_countries[0].name}</span></p>
-            </div>
-        
+            </div>     
           `);
         }
         if (content_type === "tv") {
@@ -370,13 +376,20 @@ $(document).ready(function () {
           <figure>
           <img src="https://image.tmdb.org/t/p/w500/${data.backdrop_path}" alt="Movie Poster">
           </figure>
+          <h3>${data.tagline}</h3>
           <p class="details-overview">${data.overview}</p>
           <button class="addto-watchlist">add to watchlist</button>
           <span class="item-id">${data.id}</span>
           <span class="rate-us">rate this show</span>
           <div class="more-details">
+          <div class="program-status">
           <p class="status">Status:<span class="text-red">${data.status}</span></p>
           <p class="first-air-date">First Air date: <span class="text-red">${data.first_air_date}</span></p>
+          </div>
+          <div class="trp-info">
+          <p>Popularity:<span class="text-red">${data.popularity}</span></p>
+          <p>Vote Count:<span class="text-red">${data.vote_count}</span></p>
+          </div>
           </div>
         `);
           if (data.production_companies[0].name.length > 0 && data.production_countries[0].name.length > 0) {
