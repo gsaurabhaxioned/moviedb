@@ -550,7 +550,7 @@ const displayNews = (classname) => {
             <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self">
                 <img src="https://image.tmdb.org/t/p/w500/${i.backdrop_path}" alt="Movie">
             </a>
-            <a href="details.html?id=${i.id}&type=tv" title="Get Details" target="_self" class="title">${i.name}</a>
+            <a href="details.html?id=${i.id}&type=tv" title="${i.name}" target="_self" class="title">${i.name}</a>
                 <a href="details.html?id=${i.id}&type=tv" title="${i.name}" target="_self" class="view-details">
                 view details
             </a>
