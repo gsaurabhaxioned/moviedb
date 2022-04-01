@@ -403,6 +403,10 @@ $(document).ready(function () {
     $(".rating-background").show();
   })
 
+  $(".rating-star").click(function(){
+    console.log($(this).prev().val());
+  })
+
   $(".feedback-submit").click((e) => {
     e.preventDefault();
     let starcount = $("input[type='radio']:checked").length;
