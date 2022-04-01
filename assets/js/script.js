@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
   // code for hamburger icon 
+
   $(".hamburger").click(() => {
     $(".menus").toggleClass("headermenus-show");
     $(".page-blur").toggleClass("page-show");
@@ -12,6 +13,7 @@ $(document).ready(function () {
   $(".slider").html("");
 
   // function calls to display movies according to categories 
+
   if ($(".movie-category").length > 0) {
     displayMovies("top_rated", "top-rated-movies");
     displayMovies("popular", "most-popular-movies");
@@ -20,17 +22,20 @@ $(document).ready(function () {
   }
 
   // function calls to display tv shows according to categories 
+
   if ($(".tvshow-category").length > 0) {
     displayTvshows("on_the_air", "on-air");
     displayTvshows("airing_today", "airing-today");
   }
 
   // function call to display trending shows
+
   if ($(".trending-news").length > 0) {
     displayNews("trending-news");
   }
 
   // initialising variables for login form 
+
   let loginform = $('.loginform'),
     username = $('.username'),
     password = $('.password'),
@@ -41,6 +46,7 @@ $(document).ready(function () {
   console.log(username);
 
   // validation on input boxes focusout
+
   username.focusout(() => {
     usererror.html("");
     passerror.html("");
@@ -64,6 +70,8 @@ $(document).ready(function () {
   })
 
   //login validation
+
+
   loginform.submit((event) => {
     $('.username').removeClass('errorbox');
     $('.password').removeClass('errorbox');
@@ -90,6 +98,7 @@ $(document).ready(function () {
   })
 
   //js code to check is user logged in?
+
   let valid = localStorage.getItem('validuser');
   if (!($(".login-page").length > 0)) {
     if (!valid) {
@@ -105,12 +114,14 @@ $(document).ready(function () {
   }
 
   //js code for loggout functionality
+
   $('.logout').click(() => {
     localStorage.removeItem("validuser");
     window.location.href = 'index.html';
   });
 
   // js code for search functionality 
+
   $(".search-button").click(() => {
     if ($(".search-field").val().length > 0) {
       $(".search-button").toggleClass("closeresult");
@@ -128,6 +139,7 @@ $(document).ready(function () {
   })
 
   // slick slider code 
+
   if ($(".movie-category").length > 0 || $(".tvshow-category").length > 0) {
 
     $('.slider').slick({
@@ -443,6 +455,7 @@ $(document).ready(function () {
 
 
   // code to display or remove from watchlist/favouries local storage
+
   if ($(".watchlist").length > 0) {
     showWatchlist();
 
@@ -458,6 +471,7 @@ $(document).ready(function () {
 })
 
 // function to display movies according to categories
+
 const displayMovies = (category, classname) => {
   let api_key = "8d6f976a3d568729504eb85502e74226";
   $.ajax({
@@ -479,7 +493,6 @@ const displayMovies = (category, classname) => {
       </div>
           `);
       })
-      // $(".slider").slick();
     },
     error: (error) => {
       alert("something went wrong,try again");
@@ -489,6 +502,7 @@ const displayMovies = (category, classname) => {
 }
 
 // function to tv shows according to categories
+
 const displayTvshows = (category, classname) => {
   let api_key = "8d6f976a3d568729504eb85502e74226";
   $.ajax({
@@ -510,7 +524,6 @@ const displayTvshows = (category, classname) => {
       </div>
           `);
       })
-      // $(".slider").slick();
     },
     error: (error) => {
       alert("something went wrong,try again");
@@ -559,7 +572,6 @@ const displayNews = (classname) => {
             `);
         }
       })
-      // $(".slider").slick();
     },
     error: (error) => {
       alert("something went wrong,try again");
@@ -721,7 +733,6 @@ const showWatchlist = () => {
   $(".watchlist .wrapper").html("");
   let favourites = JSON.parse(localStorage.getItem("favourites")),
     api_key = "8d6f976a3d568729504eb85502e74226";
-  //  favourites = [...allfavourites.reduce((map, obj) => map.set(obj.id, obj), new Map()).values()];
   console.log(favourites);
   favourites.forEach(i => {
     console.log(i);
