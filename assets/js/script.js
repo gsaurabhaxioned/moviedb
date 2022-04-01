@@ -416,11 +416,11 @@ $(document).ready(function () {
     } else {
       $(".submit-empty-response").hide();
       $(".submit-response").show();
-      $(".rating-background").fadeOut(4000);
-      $(".count").show();
+      $(".rating-background").fadeOut(5000);
+      $(".starcount").show();
       $(".count").html(stars);
     }
-  });
+  })
 
   $(".close-rating-box").click(() => {
     $(".rating-background").hide();
