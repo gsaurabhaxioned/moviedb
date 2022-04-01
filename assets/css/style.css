@@ -989,6 +989,11 @@ textarea {
   display: none;
 }
 
+.starcount p {
+  color: #00ffff;
+  font-size: 20px;
+}
+
 .addto-watchlist,
 .removefrom-watchlist {
   background-image: linear-gradient(45deg, #000, #696969);
