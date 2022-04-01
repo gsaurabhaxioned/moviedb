@@ -289,6 +289,10 @@ header .wrapper {
   color: #00ffff;
 }
 
+.menus-logout {
+  display: none;
+}
+
 .page-blur {
   width: 100%;
   height: 100%;
@@ -417,7 +421,7 @@ header .wrapper {
   color: #fff;
 }
 
-.logout {
+.logout-button {
   padding: 10px;
   border-radius: 12px;
   -webkit-border-radius: 12px;
@@ -437,7 +441,7 @@ header .wrapper {
   -o-transition: all ease-in-out 0.5s;
 }
 
-.logout:hover {
+.logout-button:hover {
   background-image: linear-gradient(-45deg, #ff0000, transparent);
   background-image: -webkit-linear-gradient(-45deg, #ff0000, transparent);
   background-image: -moz-linear-gradient(-45deg, #ff0000, transparent);
@@ -1228,6 +1232,10 @@ footer .wrapper {
     -o-transition: all ease-in-out 0.5s;
   }
 
+  .menus-logout {
+    display: inline-block;
+  }
+
   .headermenus-show {
     z-index: 1;
     transform: translateY(0);
@@ -1237,6 +1245,10 @@ footer .wrapper {
   .headermenus-show ul {
     flex-direction: column;
     row-gap: 10px;
+  }
+
+  .logout-button {
+    display: none;
   }
 
   .hamburger {
@@ -1312,15 +1324,7 @@ footer .wrapper {
    background-color: #000;
    color: #fff;
   }
-
-  .logout:hover {
-    background-image: linear-gradient(45deg, #ff0000, transparent);
-    background-image: -webkit-linear-gradient(45deg, #ff0000, transparent);
-    background-image: -moz-linear-gradient(45deg, #ff0000, transparent);
-    background-image: -o-linear-gradient(45deg, #ff0000, transparent);
-    color: #ffff00;
-  }
-
+  
   .title:hover {
     color: #ffa500;
   }
