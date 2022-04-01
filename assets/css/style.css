@@ -739,6 +739,9 @@ input[type="submit"]:hover {
 
 .details .wrapper {
   min-height: 100vh;
+}
+
+.detail-info {
   display: flex;
   flex-direction: column;
   align-items: center;
